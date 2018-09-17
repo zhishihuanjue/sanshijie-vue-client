@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <div class="zx"></div>
     <!-- header -->
     <app-header :poiInfo="poiInfo"></app-header>
     <!-- navigation -->
