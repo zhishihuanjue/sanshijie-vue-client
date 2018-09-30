@@ -5,6 +5,7 @@
 </template>
 
 <script>
+var THREE = require('three');
 export default {
   name: 'HelloWorld',
   data () {

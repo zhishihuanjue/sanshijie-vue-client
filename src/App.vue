@@ -6,8 +6,12 @@
 </template>
 
 <script>
+var THREE = require('three');
 export default {
-  name: 'App'
+  name: 'App',
+  created(){
+    console.log(THREE);
+  }
 }
 </script>
 
