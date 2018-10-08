@@ -111,7 +111,7 @@ export default {
             object: null,
             raycaster: new Raycaster(),
             mouse: new Vector2(),
-            camera: new PerspectiveCamera( 45, 1, 1, 100000 ),
+            camera: new PerspectiveCamera( 45, 1, 10, 100000 ),
             scene: new Scene(),
             wrapper: new Object3D(),
             renderer: null,
@@ -150,6 +150,7 @@ export default {
         this.scene.add( this.wrapper )
 
         this.load();
+        this.createSkyBox();
         this.update();
 
         this.$el.addEventListener( 'mousedown', this.onMouseDown, false );

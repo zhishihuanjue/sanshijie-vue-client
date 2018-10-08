@@ -45,7 +45,11 @@ export default {
         },
         mtl: {
             type: String
-        }
+        },
+        hasSkyBox: {
+            type: Boolean,
+            default: false
+        },
     },
     data() {
 
@@ -62,6 +66,11 @@ export default {
     watch: {
         mtl() {
             this.load();
+        },
+        skyBox(){
+            if(this.hasSkyBox){
+                this.createSkyBox()
+            }
         }
     },
     methods: {
@@ -143,6 +152,50 @@ export default {
 
             }
 
+        },
+        createSkyBox(){
+            if(!this.hasSkyBox)return;
+            var cubeMap = new THREE.CubeTexture( [] );
+		    cubeMap.format = THREE.RGBFormat;
+            new THREE.ImageLoader().load( '../../static/skybox.png',(img)=>{
+                var size = 256;
+                var getSide = function ( x, y ) {
+                    var canvas = document.createElement( 'canvas' );
+                    canvas.width = size;
+                    canvas.height = size;
+                    canvas.fillStyle="#aec5da";
+                    var context = canvas.getContext( '2d' );
+                    if (img){
+                        context.drawImage( img, - x * size, - y * size );
+                    }
+                        
+                    return canvas;
+                };
+                cubeMap.images[ 0 ] = getSide( 2, 1 ); // px
+                cubeMap.images[ 1 ] = getSide( 0, 1 ); // nx
+                cubeMap.images[ 2 ] = getSide( 1, 0 ); // py
+                cubeMap.images[ 3 ] = getSide( 1, 2 ); // ny
+                cubeMap.images[ 4 ] = getSide( 1, 1 ); // pz
+                cubeMap.images[ 5 ] = getSide( 3, 1 ); // nz
+                cubeMap.needsUpdate = true;
+                
+                var cubeShader = THREE.ShaderLib[ 'cube' ];
+                cubeShader.uniforms[ 'tCube' ].value = cubeMap;
+                var skyBoxMaterial = new THREE.ShaderMaterial( {
+                    fragmentShader: cubeShader.fragmentShader,
+                    vertexShader: cubeShader.vertexShader,
+                    uniforms: cubeShader.uniforms,
+                    depthWrite: false,
+                    side: THREE.BackSide
+                } );
+                
+                var skyBox = new THREE.Mesh(
+                    new THREE.BoxGeometry( size*30, size*30, size*30),
+                    skyBoxMaterial
+                );
+                //this.addObject( skyBox )
+                this.wrapper.add( skyBox )
+            } );
         },
     }
 }

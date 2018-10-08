@@ -1,5 +1,5 @@
 <template>
-  <router-link class="personalCenterButton" to='/personalCenter'></router-link>
+  <router-link class="personalCenterButton" to='/login'></router-link>
 </template>
 
 <script>

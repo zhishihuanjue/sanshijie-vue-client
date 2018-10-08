@@ -4,6 +4,7 @@
             :backgroundAlpha="0"
             :src=src
             :mtl=mtl
+            :hasSkyBox=hasSkyBox
             :cameraPosition=cameraPosition
             @on-click="onClick"
             @on-load="onLoad"
@@ -20,11 +21,12 @@
         name:"Sandboxie",
         data(){
             return {
-                src:"static/models/rongchuangmax2.obj",
-                mtl:"static/models/rongchuangmax2.mtl",
-                cameraPosition:{x:-1000,y:500,z:1000},
-                loading: true,
-                progress: 0
+                src : "static/models/rongchuangmax2.obj",
+                mtl : "static/models/rongchuangmax2.mtl",
+                cameraPosition : {x:-1000,y:500,z:1000},
+                loading : true,
+                hasSkyBox : true,
+                progress : 0
             }
         },
         methods:{
