@@ -1,0 +1,54 @@
+newmtl 5ad9a39fac331
+Ns 40
+Ni 0.98
+d 0.9
+Tr 0
+Tf 1 1 1
+illum 2
+Ka 0.58 0.58 0.58
+Kd 0.58 0.58 0.58
+Ks 0.00 0.00 0.00
+Ke 0.00 0.00 0.00
+map_Ka 5ad9a39fac331.png
+map_Kd 5ad9a39fac331.png
+
+newmtl DIDA_default
+Ns 40
+Ni 0.98
+d 1
+Tr 0
+Tf 1 1 1
+illum 2
+Ka 0.15 0.24 0.63
+Kd 0.15 0.24 0.63
+Ks 0.00 0.00 0.00
+Ke 0.00 0.00 0.00
+
+newmtl 5ad9b12a9820e
+Ns 40
+Ni 0.98
+d 1
+Tr 0
+Tf 1 1 1
+illum 2
+Ka 0.58 0.58 0.58
+Kd 0.58 0.58 0.58
+Ks 0.00 0.00 0.00
+Ke 0.00 0.00 0.00
+map_Ka 5ad9b12a9820e.jpg
+map_Kd 5ad9b12a9820e.jpg
+
+newmtl 5afe93b0b6a2d
+Ns 40
+Ni 0.98
+d 1
+Tr 0
+Tf 1 1 1
+illum 2
+Ka 0.58 0.58 0.58
+Kd 0.58 0.58 0.58
+Ks 0.00 0.00 0.00
+Ke 0.00 0.00 0.00
+map_Ka 5afe93b0b6a2d.jpg
+map_Kd 5afe93b0b6a2d.jpg
+
