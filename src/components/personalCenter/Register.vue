@@ -1,0 +1,70 @@
+<template>
+  <div class="register">
+    <mt-field label="手机号" placeholder="请输入手机号" type="tel" v-model="phone"></mt-field>
+    <mt-field label="密码" placeholder="请输入密码" type="password" v-model="password"></mt-field>
+    <mt-field label="再输入一次" placeholder="请输入密码" type="password_two" v-model="password"></mt-field>
+    <mt-field label="验证码" placeholder="请输入验证码" v-model="captcha">
+        <mt-button type="default" class="mySmallButton" @click="getCaptcha" v-if="!captchaStatus">获取验证码</mt-button>
+        <mt-button type="default" class="mySmallButton" :disabled="captchaStatus" v-else>重新获取({{time}}s)</mt-button>
+    </mt-field>
+    <mt-button type="default" plain size="large">注册</mt-button>
+    <div class="other">
+      点击“注册”即表示您同意
+      <a @click.prevent="agreement">《三视界使用协议》</a>
+    </div>
+  </div>
+</template>
+
+<script>
+import { MessageBox } from 'mint-ui'
+export default {
+  name: 'Register',
+  data () {
+    return {
+      phone:null,
+      password:null,
+      password_two:null,
+      captcha:null,
+      rememberMe:false,
+      captchaStatus:false,
+      time:60
+    }
+  },
+  methods:{
+    agreement(){
+        MessageBox('三视界使用协议', `三视界网（以下简称“三视界”）根据以下服务条款为您提供服务`);
+    },
+    getCaptcha(){
+        this.captchaStatus = true;
+        var timer = setInterval(()=>{
+            this.time--;
+            if(this.time === 0){
+                this.time = 60;
+                this.captchaStatus = false;
+                clearInterval(timer);
+            }
+        },1000)
+    }
+  }
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+.register{
+  margin-top: 4px;
+}
+.register .mySmallButton{
+  font-size: 12px;
+  padding: 2px;
+  height: 24px;
+}
+.register .other{
+  padding: 10px 0 0 0;
+  font-size: 12px;
+}
+.register .other a{
+  color: #000;
+  border-bottom: 1px solid #000;
+}
+</style>

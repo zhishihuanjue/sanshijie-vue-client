@@ -4,6 +4,8 @@ import Router from 'vue-router'
 import Nav from '@/components/nav/Nav'
 import PersonalCenter from '@/components/personalCenter/PersonalCenter'
 import Login from '@/components/personalCenter/Login'
+import LoginRegister from '@/components/personalCenter/LoginRegister'
+import Setting from '@/components/personalCenter/Setting'
 
 
 Vue.use(Router)
@@ -27,6 +29,14 @@ export default new Router({
     {
       path: '/login',
       component: Login
+    },
+    {
+      path: '/loginRegister',
+      component: LoginRegister
+    },
+    {
+      path: '/setting',
+      component: Setting
     },
   ]
 })

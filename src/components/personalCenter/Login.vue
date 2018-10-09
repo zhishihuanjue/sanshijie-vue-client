@@ -1,13 +1,17 @@
 <template>
   <div class="login">
-    <span class="title">登录</span>
     <mt-field label="手机号" placeholder="请输入手机号" type="tel" v-model="phone"></mt-field>
-    <mt-field label="密码" placeholder="请输入密码" type="password" v-model="password"></mt-field>
-    <mt-field label="验证码" v-model="captcha">
-        <img src="../../assets/logo.png" height="45px" width="100px">
+    <mt-field label="密码" placeholder="请输入密码" type="password" v-model="password"  v-if="loginMode=='password'"></mt-field>
+    <mt-field label="验证码" placeholder="请输入验证码" v-model="captcha" v-else>
+        <mt-button type="default" class="mySmallButton" @click="getCaptcha" v-if="!captchaStatus">获取验证码</mt-button>
+        <mt-button type="default" class="mySmallButton" :disabled="captchaStatus" v-else>重新获取({{time}}s)</mt-button>
     </mt-field>
-    <mt-field></mt-field>
     <mt-button type="default" plain size="large">登录</mt-button>
+    <div class="other">
+      <input type="checkbox" v-model="rememberMe"/>记住我 | 
+      <a @click.prevent="changeLoginMode('message')" v-if="loginMode=='password'">短信验证码登录</a>
+      <a @click.prevent="changeLoginMode('password')" v-else>账号密码登录</a>
+    </div>
   </div>
 </template>
 
@@ -16,7 +20,29 @@ export default {
   name: 'Login',
   data () {
     return {
-      phone,password
+      phone:null,
+      password:null,
+      captcha:null,
+      rememberMe:false,
+      loginMode:"password",
+      captchaStatus:false,
+      time:60
+    }
+  },
+  methods:{
+    changeLoginMode(value){
+      this.loginMode = value;
+    },
+    getCaptcha(){
+      this.captchaStatus = true;
+      var timer = setInterval(()=>{
+        this.time--;
+        if(this.time === 0){
+          this.time = 60;
+          this.captchaStatus = false;
+          clearInterval(timer);
+        }
+      },1000)
     }
   }
 }
@@ -25,14 +51,18 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .login{
-    padding: 100px 20px 0px 20px;
+  margin-top: 4px;
 }
-.login .title{
-    width: 100%;
-    display: block;
-    text-align: center;
-    font-size: 20px;
-    font-weight: bolder;
-    margin-bottom:20px; 
+.login .mySmallButton{
+  font-size: 12px;
+  padding: 2px;
+  height: 24px;
+}
+.login .other{
+  padding: 10px 0 0 0;
+  font-size: 12px;
+}
+.login .other a{
+  color: #000;
 }
 </style>
