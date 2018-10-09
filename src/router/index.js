@@ -6,6 +6,8 @@ import PersonalCenter from '@/components/personalCenter/PersonalCenter'
 import Login from '@/components/personalCenter/Login'
 import LoginRegister from '@/components/personalCenter/LoginRegister'
 import Setting from '@/components/personalCenter/Setting'
+import Code from '@/components/personalCenter/Code'
+import MyBuilding from '@/components/personalCenter/MyBuilding'
 
 
 Vue.use(Router)
@@ -37,6 +39,14 @@ export default new Router({
     {
       path: '/setting',
       component: Setting
+    },
+    {
+      path: '/code',
+      component: Code
+    },
+    {
+      path: '/myBuilding',
+      component: MyBuilding
     },
   ]
 })

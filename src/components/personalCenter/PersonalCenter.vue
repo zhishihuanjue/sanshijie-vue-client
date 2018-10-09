@@ -2,11 +2,12 @@
   <div class="personalCenter">
       <div class="header">
         <div class="logo"></div>
-        <a class="tel">18213917293</a>
+        <!-- <a class="tel">18213917293</a> -->
+        <router-link to="/loginRegister">点击登录</router-link>
       </div>
       <div class="pcBody">
         <mt-cell title="我的关注"></mt-cell>
-        <mt-cell title="楼盘"  to="/nav"  is-link></mt-cell>
+        <mt-cell title="楼盘"  to="/myBuilding"  is-link></mt-cell>
         <mt-cell title="户型"  to="/nav"  is-link></mt-cell>
         <mt-cell title=""></mt-cell>
         <mt-cell title="设置"  to="/setting"  is-link></mt-cell>
@@ -56,7 +57,7 @@ export default {
   -moz-background-size:100% 100%;
   box-shadow:0 0 1px 1px #ddd;
 }
-.personalCenter .header .tel{
+.personalCenter .header a{
   display: block;
   margin: 10px 0 0 0;
   text-align: center;
