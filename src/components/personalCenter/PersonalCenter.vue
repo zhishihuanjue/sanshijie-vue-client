@@ -1,6 +1,9 @@
 <template>
   <div class="personalCenter">
       <div class="header">
+        <div class="userType">
+          {{userTypeName}}
+        </div>
         <div class="logo"></div>
         <!-- <a class="tel">18213917293</a> -->
         <router-link to="/loginRegister">点击登录</router-link>
@@ -20,7 +23,8 @@ export default {
   name: 'PersonalCenter',
   data () {
     return {
-      
+      userType:"01",
+      userTypeName:"开发商"
     }
   }
 }
@@ -37,7 +41,7 @@ export default {
   background-color: #fff;
 }
 .personalCenter .header{
-  padding:40px 0 0 0;
+  padding:30px 0 0 0;
   /* border: 1px solid black; */
   background-image:url(../../assets/headerBG.png);
   background-repeat:no-repeat; 
@@ -55,7 +59,7 @@ export default {
   background-repeat:no-repeat; 
   background-size:100% 100%;
   -moz-background-size:100% 100%;
-  box-shadow:0 0 1px 1px #ddd;
+  box-shadow: 0 4px 2px -2px rgba(0,0,0,0.4);
 }
 .personalCenter .header a{
   display: block;
@@ -64,6 +68,19 @@ export default {
   font-size: 18px;
   font-weight: bolder;
   color: #000;
+}
+.personalCenter .header .userType{
+  width: 80px;
+  height: 34px;
+  background-color: rgb(255, 184, 21);
+  color: #fff;
+  font-size: 16px;
+  font-weight: bolder;
+  text-align: center;
+  line-height: 34px;
+  box-shadow: 0 4px 2px -2px rgba(0,0,0,0.4);
+  border-top-right-radius:17px;
+  border-bottom-right-radius:17px;
 }
 .personalCenter .pcBody{
   padding: 10px;

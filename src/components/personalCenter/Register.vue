@@ -2,12 +2,12 @@
   <div class="register">
     <mt-field label="手机号" placeholder="请输入手机号" type="tel" v-model="phone"></mt-field>
     <mt-field label="密码" placeholder="请输入密码" type="password" v-model="password"></mt-field>
-    <mt-field label="再输入一次" placeholder="请输入密码" type="password_two" v-model="password"></mt-field>
+    <mt-field label="再输入一次" placeholder="请输入密码" type="password" v-model="password_two"></mt-field>
     <mt-field label="验证码" placeholder="请输入验证码" v-model="captcha">
         <mt-button type="default" class="mySmallButton" @click="getCaptcha" v-if="!captchaStatus">获取验证码</mt-button>
         <mt-button type="default" class="mySmallButton" :disabled="captchaStatus" v-else>重新获取({{time}}s)</mt-button>
     </mt-field>
-    <mt-button type="default" plain size="large">注册</mt-button>
+    <mt-button type="default" plain size="large" @click="register">注册</mt-button>
     <div class="other">
       点击“注册”即表示您同意
       <a @click.prevent="agreement">《三视界使用协议》</a>
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { MessageBox } from 'mint-ui'
+import { MessageBox,Toast } from 'mint-ui'
 export default {
   name: 'Register',
   data () {
@@ -27,7 +27,8 @@ export default {
       captcha:null,
       rememberMe:false,
       captchaStatus:false,
-      time:60
+      time:60,
+      phoneState:"none"
     }
   },
   methods:{
@@ -44,6 +45,38 @@ export default {
                 clearInterval(timer);
             }
         },1000)
+    },
+    checkPhone(){
+      const reg = /^1[3|4|5|7|8][0-9]\d{8}$/
+      return reg.test(this.phone)
+    },
+    register(){
+      if( !this.checkPhone() ){
+        //手机号码不正确
+        this.phoneState = "error"
+        Toast({
+          message: '手机号码不正确',
+          duration: 2000
+        });
+      } else if(this.password !== this.password_two){
+        //两次密码不匹配
+        Toast({
+          message: '两次密码不相同',
+          duration: 2000
+        });
+      } else if(false){
+        //手机验证码不正确
+        Toast({
+          message: '手机验证码不正确',
+          duration: 2000
+        });
+      } else {
+        //执行注册
+        Toast({
+          message: '注册成功',
+          duration: 2000
+        });
+      }
     }
   }
 }
