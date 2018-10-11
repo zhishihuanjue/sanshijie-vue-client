@@ -13,6 +13,7 @@
         <mt-cell title="楼盘"  to="/myBuilding"  is-link></mt-cell>
         <mt-cell title="户型"  to="/nav"  is-link></mt-cell>
         <mt-cell title=""></mt-cell>
+        <mt-cell title="推荐二维码"  to="/"  is-link></mt-cell>
         <mt-cell title="设置"  to="/setting"  is-link></mt-cell>
       </div>
   </div>
@@ -41,7 +42,7 @@ export default {
   background-color: #fff;
 }
 .personalCenter .header{
-  padding:30px 0 0 0;
+  padding:1.5rem /* 30/20 */ 0 0 0;
   /* border: 1px solid black; */
   background-image:url(../../assets/headerBG.png);
   background-repeat:no-repeat; 
@@ -49,8 +50,8 @@ export default {
   -moz-background-size:100% 100%;
 }
 .personalCenter .header .logo{
-  width: 80px;
-  height: 80px;
+  width: 4rem /* 80/20 */;
+  height: 4rem /* 80/20 */;
   border-radius: 50%;
   background-color: blue;
   margin:0 auto;
@@ -63,26 +64,26 @@ export default {
 }
 .personalCenter .header a{
   display: block;
-  margin: 10px 0 0 0;
+  margin: .5rem /* 10/20 */ 0 0 0;
   text-align: center;
-  font-size: 18px;
+  font-size: .9rem /* 18/20 */;
   font-weight: bolder;
   color: #000;
 }
 .personalCenter .header .userType{
-  width: 80px;
-  height: 34px;
+  width: 4rem /* 80/20 */;
+  height: 1.7rem /* 34/20 */;
   background-color: rgb(255, 184, 21);
   color: #fff;
-  font-size: 16px;
+  font-size: .8rem /* 16/20 */;
   font-weight: bolder;
   text-align: center;
-  line-height: 34px;
+  line-height: 1.7rem /* 34/20 */;
   box-shadow: 0 4px 2px -2px rgba(0,0,0,0.4);
-  border-top-right-radius:17px;
-  border-bottom-right-radius:17px;
+  border-top-right-radius:.85rem /* 17/20 */;
+  border-bottom-right-radius:.85rem /* 17/20 */;
 }
 .personalCenter .pcBody{
-  padding: 10px;
+  padding: .5rem /* 10/20 */;
 }
 </style>

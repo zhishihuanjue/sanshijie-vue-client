@@ -21,6 +21,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .setting{
-  padding: 0 10px 0 10px;
+  padding: 0 .5rem /* 10/20 */ 0 .5rem /* 10/20 */;
 }
 </style>

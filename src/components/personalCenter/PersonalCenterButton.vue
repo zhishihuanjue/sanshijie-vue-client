@@ -18,16 +18,16 @@ export default {
 <style scoped>
 .personalCenterButton{
     display: block;
-    width: 30px;
-    height: 30px;
+    width: 1.5rem /* 30/20 */;
+    height: 1.5rem /* 30/20 */;
     border-radius: 50%;
     border: 2px solid #333;
     background-color: black;
     position: fixed;
-    top: 12px;
-    right: 12px;
+    top: .6rem /* 12/20 */;
+    right: .6rem /* 12/20 */;
     z-index: 1;
     background:url(../../assets/个人中心.png) no-repeat center center;
-    background-size: 30px 30px;
+    background-size: 1.5rem /* 30/20 */ 1.5rem /* 30/20 */;
 }
 </style>

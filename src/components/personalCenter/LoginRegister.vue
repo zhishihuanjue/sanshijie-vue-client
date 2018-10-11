@@ -37,10 +37,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
 .loginRegister{
-    padding: 100px 40px 0px 40px;
+    padding: 5rem 1rem 0px 1rem;
 }
 .mt-tab-item-myStyle .mint-tab-item-label{
-    font-size: 20px;
+    font-size: 1rem;
     font-weight: bolder;
 }
 </style>

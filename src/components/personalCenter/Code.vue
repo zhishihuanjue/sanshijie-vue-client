@@ -37,15 +37,15 @@ export default {
   background-color: rgb(255, 255, 255);
 }
 .code .header{
-    padding: 20px;
-    font-size: 18px;
+    padding: 1rem /* 20/20 */;
+    font-size: .9rem /* 18/20 */;
     text-align: center;
 }
 .code .codeImg{
     display: block;
-    margin: 20px auto 0 auto;
-    width:282px; 
-    height:393px;
+    margin: 1rem /* 20/20 */ auto 0 auto;
+    width:14.1rem /* 282/20 */; 
+    height:19.65rem /* 393/20 */;
     background-image:url(../../assets/code.jpg);
     background-repeat:no-repeat; 
     background-size:100% 100%;

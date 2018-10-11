@@ -1,14 +1,11 @@
 <template>
   <div class="home">
-    <div class="homeHeader"></div>
+    <div class="homeHeader">{{name}}</div>
     <div class="swipe">
       <div class="swipe-wrapper">
           <mt-swipe ref="swipeWrapper">
-              <!-- <mt-swipe-item v-for="(img,index) in swipeImages" class="item" :key="index">
-                <div class="zoomImage" style="background-image:url(../../../static/images/2.jpg)"></div>
-              </mt-swipe-item> -->
               <mt-swipe-item class="swip-item-1 item" v-for="(img,index) in swipeImages" :key="index">
-                <div style="background-image:url(../../../static/images/2.jpg)"></div>
+                <img :src="img" alt="">
               </mt-swipe-item>
           </mt-swipe>
       </div>
@@ -18,6 +15,14 @@
           <button class="next-button flex-item" @click.stop="next"></button>
       </div>
     </div>
+    基本信息
+    <div id="container">
+      <ul>
+        <li v-for="(item,index) in swipeImages" :key="index">
+          <img v-lazy="item">
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -26,8 +31,16 @@ export default {
   name: 'Home',
   data () {
     return {
+      name:"东华小区",
       swipeImages:[
-        "../../../static/images/1.jpg"
+        "../../../static/images/1.jpg",
+        "../../../static/images/2.jpg",
+        "../../../static/images/3.jpg",
+        "../../../static/images/3.jpg",
+        "../../../static/images/3.jpg",
+        "../../../static/images/3.jpg",
+        "../../../static/images/3.jpg",
+        "../../../static/images/3.jpg"
       ]
     }
   },
@@ -38,11 +51,6 @@ export default {
       next: function () {
           this.$refs.swipeWrapper.next();
       }
-  },
-  filters:{
-    bgImage(img){
-      return "background-image:url(" + img + ")"
-    }
   }
 }
 </script>
@@ -50,36 +58,33 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .homeHeader{
-  height: 30px;
-}
-.swipe{
-  position: relative;
+  height: 1.5rem /* 30/20 */;
+  width: 16rem /* 320/20 */;
+  text-align: center;
+  line-height: 1.5rem /* 30/20 */;
+  font-size: 1rem /* 20/20 */;
 }
 .swipe-wrapper{
-  width: 100%;
-  height:0;
-  padding-bottom: 100%;
+  width: 16rem;
+  height: 8rem;
 }
-.item div{
-  width:100%;
-  height:0;
-  padding-bottom: 100%;
-  overflow:hidden;
-  background-position: center center;
-  background-repeat: no-repeat;
-  -webkit-background-size:cover;
-  -moz-background-size:cover;
-  background-size:cover;
+.item img{
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  background-repeat:no-repeat; 
+  background-size:100% 100%;
+  -moz-background-size:100% 100%;
 }
 .button-wrapper{
   position: absolute;
-  top: 85px;
+  top: 4.75rem;
   width: 100%;
 }
 .flex-item{
   position:absolute;
-  height: 30px;
-  width: 30px;
+  height: 1.5rem /* 30/20 */;
+  width: 1.5rem /* 30/20 */;
   border: none;
   background-color: rgba(0, 0, 0, 0);
   background-repeat:no-repeat; 
@@ -88,10 +93,19 @@ export default {
 }
 .prev-button{
   background-image:url(../../assets/prev.png);
-  left: 20px;
+  left: 1rem /* 20/20 */;
 }
 .next-button{
   background-image:url(../../assets/next.png);
-  right: 20px;
+  right: 1rem /* 20/20 */;
+}
+
+#container img{
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  background-repeat:no-repeat; 
+  background-size:100% 100%;
+  -moz-background-size:100% 100%;
 }
 </style>

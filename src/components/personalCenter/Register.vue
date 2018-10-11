@@ -85,16 +85,16 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .register{
-  margin-top: 4px;
+  margin-top: .3rem;
 }
 .register .mySmallButton{
-  font-size: 12px;
-  padding: 2px;
-  height: 24px;
+  font-size: .6rem /* 12/20 */;
+  padding: .1rem /* 2/20 */;
+  height: 1.2rem /* 24/20 */;
 }
 .register .other{
-  padding: 10px 0 0 0;
-  font-size: 12px;
+  padding: .5rem /* 10/20 */ 0 0 0;
+  font-size: .6rem /* 12/20 */;
 }
 .register .other a{
   color: #000;
