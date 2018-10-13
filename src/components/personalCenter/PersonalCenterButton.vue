@@ -3,7 +3,6 @@
 </template>
 
 <script>
-import { Toast } from 'mint-ui'
 export default {
   name: 'personalCenterButton',
   data () {
@@ -18,16 +17,16 @@ export default {
 <style scoped>
 .personalCenterButton{
     display: block;
-    width: 1.5rem /* 30/20 */;
-    height: 1.5rem /* 30/20 */;
+    width: 1.2rem /* 24/20 */;
+    height: 1.2rem /* 24/20 */;
     border-radius: 50%;
-    border: 2px solid #333;
+    border: 2px solid #000;
     background-color: black;
     position: fixed;
-    top: .6rem /* 12/20 */;
-    right: .6rem /* 12/20 */;
+    top: 1rem /* 20/20 */;
+    right: .9rem /* 18/20 */;
     z-index: 1;
     background:url(../../assets/个人中心.png) no-repeat center center;
-    background-size: 1.5rem /* 30/20 */ 1.5rem /* 30/20 */;
+    background-size: 1.2rem /* 24/20 */ 1.2rem /* 24/20 */;
 }
 </style>

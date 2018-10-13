@@ -51,6 +51,7 @@ import Sandboxie from '../sandboxie/Sandboxie'
 import House from '../house/House'
 import Book from '../book/Book'
 import PersonalCenterButton from '../personalCenter/PersonalCenterButton'
+
 export default {
   name: 'page-tabbar',
   data() {
@@ -69,14 +70,9 @@ export default {
 </script>
  
 <style scoped>
-  .page-tabbar {
-    overflow: hidden;
-    height: 100vh;
-  }
- 
   .page-wrap {
     overflow: auto;
     height: 100%;
-    padding-bottom: 100px;
+    padding-bottom: 55px;
   }
 </style>

@@ -15,34 +15,44 @@
           <button class="next-button flex-item" @click.stop="next"></button>
       </div>
     </div>
-    基本信息
-    <div id="container">
+    <span class="introduce">基本信息</span>
+    <div class="container" ref="page-content">
       <ul>
-        <li v-for="(item,index) in swipeImages" :key="index">
+        <li v-for="(item,index) in images" :key="index">
           <img v-lazy="item">
         </li>
       </ul>
     </div>
+    <app-endLine></app-endLine>
   </div>
 </template>
 
 <script>
+import EndLine from "../tool/EndLine"
+
+import BScroll from 'better-scroll'
+
 export default {
   name: 'Home',
   data () {
     return {
-      name:"东华小区",
+      name:"三视界",
       swipeImages:[
         "../../../static/images/1.jpg",
         "../../../static/images/2.jpg",
         "../../../static/images/3.jpg",
-        "../../../static/images/3.jpg",
-        "../../../static/images/3.jpg",
-        "../../../static/images/3.jpg",
-        "../../../static/images/3.jpg",
-        "../../../static/images/3.jpg"
+      ],
+      images:[
+        "../../../static/images/4.jpg",
+        "../../../static/images/5.jpg",
+        "../../../static/images/6.jpg",
+        "../../../static/images/7.jpg",
+        "../../../static/images/8.jpg"
       ]
     }
+  },
+  components:{
+    "app-endLine":EndLine
   },
   methods: {
       prev: function () {
@@ -62,7 +72,8 @@ export default {
   width: 16rem /* 320/20 */;
   text-align: center;
   line-height: 1.5rem /* 30/20 */;
-  font-size: 1rem /* 20/20 */;
+  font-size: .8rem /* 16/20 */;
+  font-weight: bolder;
 }
 .swipe-wrapper{
   width: 16rem;
@@ -99,13 +110,22 @@ export default {
   background-image:url(../../assets/next.png);
   right: 1rem /* 20/20 */;
 }
-
-#container img{
+.container img{
   width: 100%;
   height: auto;
   max-width: 100%;
   background-repeat:no-repeat; 
   background-size:100% 100%;
   -moz-background-size:100% 100%;
+}
+.container img[lazy=loading]{
+  width: 100%;
+  height: auto;
+  background-color: #ddd;
+}
+.introduce{
+  display: inline-block;
+  font-size: .6rem /* 12/20 */;
+  padding: 4px;
 }
 </style>

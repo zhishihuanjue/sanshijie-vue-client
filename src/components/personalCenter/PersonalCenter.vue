@@ -1,5 +1,6 @@
 <template>
   <div class="personalCenter">
+      <app-back></app-back>
       <div class="header">
         <div class="userType">
           {{userTypeName}}
@@ -20,6 +21,7 @@
 </template>
 
 <script>
+import Back from '../tool/Back'
 export default {
   name: 'PersonalCenter',
   data () {
@@ -27,6 +29,9 @@ export default {
       userType:"01",
       userTypeName:"开发商"
     }
+  },
+  components:{
+    "app-back":Back
   }
 }
 </script>
