@@ -18,11 +18,11 @@ export default {
     },
     isFixed:{
         type:Boolean,
-        default:true
+        default:false
     },
     back:{
         type:Boolean,
-        default:true
+        default:false
     }
   },
   data () {
@@ -34,9 +34,12 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style >
 .header .zx-header{
     background-color: #fafafa;
     color: #333;
+}
+.header .zx-header h1{
+  overflow: visible;
 }
 </style>

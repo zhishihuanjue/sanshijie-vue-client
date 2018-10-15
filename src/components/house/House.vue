@@ -1,8 +1,8 @@
 <template>
   <div class="house">
-    <app-header :back=false title="户型列表"></app-header>
+    <app-header title="户型列表"></app-header>
     <!-- 具体的户型列表 -->
-    <ul class="houseList" :class="{hasHeader:hasHeader}">
+    <ul class="houseList">
       <li 
         v-for="(house,index) in houses" 
         :key="index" 
@@ -34,11 +34,14 @@
         </div>
       </li>
     </ul>
+    <!-- 户型详情 -->
+    <app-house-detail :house="selectHouse" ref="houseView"></app-house-detail>
   </div>
 </template>
 
 <script>
 import Header from "../header/Header"
+import HouseDetail from "../houseDetail/HouseDetail"
 import Operation from "./Operation"
 export default {
   name: 'House',
@@ -52,8 +55,8 @@ export default {
           "area":"89",
           "houseType":"三室两厅一厨一卫",
           "unitPrice":"10000",
-          "operation":[1,2,3,4],
-          "img":"http://p1.meituan.net/xianfu/7d8678b48687b91e478be0f0c1f4c8e1361240.png"
+          "operation":[1,2,3],
+          "img":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539623165636&di=dfe6280e32ca0e196d2f2e0ab908f746&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180104%2F363ffa1396c9451c84eadcb56c2d210b.jpeg"
         },{
           "key":"002",
           "type":"A02",
@@ -61,22 +64,27 @@ export default {
           "area":"105",
           "houseType":"三室两厅一厨一卫",
           "unitPrice":"10000",
-          "operation":[1,2,3,4],
-          "img":"http://p1.meituan.net/xianfu/7d8678b48687b91e478be0f0c1f4c8e1361240.png"
+          "operation":[1,2,3],
+          "img":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539623281153&di=7398831a2993b4f3f3c9af6c0313fb1c&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20170713%2F7fae2b3125724dec934fb0da5f981b79.png"
         }
-      ]
+      ],
+      selectHouse:{}
     }
   },
   components:{
     "app-header":Header,
-    "app-operation":Operation
+    "app-operation":Operation,
+    "app-house-detail":HouseDetail
   },
   methods:{
     head_bg(imgName){
       return "background-image: url(" + imgName + ");"
     },
-    showDetail(){
+    showDetail(house){
+      this.selectHouse = house
 
+      this.$refs.houseView.showView()
+      console.log(123)
     }
   },
   filters:{
@@ -92,11 +100,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.house{
-  padding: .5rem /* 10/20 */;
-}
-.hasHeader{
-  margin-top: 40px;
+.houseList{
+  padding: 0 .3rem /* 6/20 */;
 }
 .house .house-item{
 	display: flex;

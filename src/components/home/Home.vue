@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="homeHeader">{{name}}</div>
+    <app-header :isFixed=true :title="name"></app-header>
     <div class="swipe">
       <div class="swipe-wrapper">
           <mt-swipe ref="swipeWrapper">
@@ -29,8 +29,9 @@
 
 <script>
 import EndLine from "../tool/EndLine"
+import Header from "../header/Header"
 
-import BScroll from 'better-scroll'
+// import BScroll from 'better-scroll'
 
 export default {
   name: 'Home',
@@ -52,7 +53,8 @@ export default {
     }
   },
   components:{
-    "app-endLine":EndLine
+    "app-endLine":EndLine,
+    "app-header":Header
   },
   methods: {
       prev: function () {
@@ -67,13 +69,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.homeHeader{
-  height: 1.5rem /* 30/20 */;
-  width: 16rem /* 320/20 */;
-  text-align: center;
-  line-height: 1.5rem /* 30/20 */;
-  font-size: .8rem /* 16/20 */;
-  font-weight: bolder;
+.swipe{
+  margin-top: 40px;
 }
 .swipe-wrapper{
   width: 16rem;

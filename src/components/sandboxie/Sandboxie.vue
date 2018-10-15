@@ -1,5 +1,6 @@
 <template>
     <div class="sandboxie">
+        <app-header title="沙盘预览"></app-header>
         <model-obj 
             :backgroundAlpha="0"
             :src=src
@@ -16,6 +17,7 @@
 </template>
 
 <script>
+    import Header from '../header/Header'
     import ModelObj from '../three/model-obj'
     import { Toast } from 'mint-ui'
     export default {
@@ -58,7 +60,8 @@
             },
         },
         components: {
-            ModelObj
+            ModelObj,
+            "app-header":Header
         }
     }
 </script>

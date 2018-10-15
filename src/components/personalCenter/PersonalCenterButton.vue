@@ -25,7 +25,7 @@ export default {
     position: fixed;
     top: 1rem /* 20/20 */;
     right: .9rem /* 18/20 */;
-    z-index: 1;
+    z-index: 2;
     background:url(../../assets/个人中心.png) no-repeat center center;
     background-size: 1.2rem /* 24/20 */ 1.2rem /* 24/20 */;
 }
