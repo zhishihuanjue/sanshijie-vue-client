@@ -19,8 +19,8 @@
     export default {
         data(){
             return {
-                src:"static/models/rongchuangmax2.obj",
-                mtl:"static/models/rongchuangmax2.mtl",
+                src:"static/models/shapan.obj",
+                mtl:"static/models/shapan.mtl",
                 cameraPosition:{x:-1000,y:500,z:1000},
                 loading: true,
                 progress: 0

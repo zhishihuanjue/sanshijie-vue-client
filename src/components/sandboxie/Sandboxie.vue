@@ -6,6 +6,7 @@
             :mtl=mtl
             :hasSkyBox=hasSkyBox
             :cameraPosition=cameraPosition
+            :controlParams=controlParams
             @on-click="onClick"
             @on-load="onLoad"
             @on-progress="onProgress"
@@ -16,22 +17,36 @@
 
 <script>
     import ModelObj from '../three/model-obj'
-
+    import { Toast } from 'mint-ui'
     export default {
         name:"Sandboxie",
         data(){
             return {
-                src : "static/models/rongchuangmax2.obj",
-                mtl : "static/models/rongchuangmax2.mtl",
-                cameraPosition : {x:-1000,y:500,z:1000},
+                src : "static/models/shapan.obj",
+                mtl : "static/models/shapan.mtl",
+                cameraPosition : {x:-5000,y:2000,z:5000},
                 loading : true,
                 hasSkyBox : true,
-                progress : 0
+                progress : 0,
+                controlParams:{
+                    enableDamping:true, // an animation loop is required when either damping or auto-rotation are enabled
+                    dampingFactor:0.25,
+                    screenSpacePanning:false,
+                    minDistance:4000,
+                    maxDistance:8000,
+                    maxPolarAngle:Math.PI / 2
+                }
             }
         },
         methods:{
-            onClick(...args){
-                console.log(args)
+            onClick(intersected){
+                console.log(intersected)
+                let name = intersected.object.name
+                if(!/^d\d+$/.test(name))return;
+                Toast({
+                    message: name,
+                    duration: 2000
+                });
             },
             onLoad() {
                 this.loading = false

@@ -97,6 +97,19 @@ export default {
             type: Boolean,
             default: true
         },
+        controlParams: {
+            type: Object,
+            default() {
+                return {
+                    enableDamping:true, // an animation loop is required when either damping or auto-rotation are enabled
+                    dampingFactor:0.25,
+                    screenSpacePanning:false,
+                    minDistance:1000,
+                    maxDistance:5000,
+                    maxPolarAngle:Math.PI / 2
+                };
+            }
+        },
         crossOrigin: {
             default: 'anonymous'
         }
@@ -426,15 +439,15 @@ export default {
                 if ( this.controls ) return;
 
                 this.controls = new OrbitControls( this.camera, this.$el );
-                this.controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
-                this.controls.dampingFactor = 0.25;
+                this.controls.enableDamping = this.controlParams["enableDamping"]; // an animation loop is required when either damping or auto-rotation are enabled
+                this.controls.dampingFactor = this.controlParams["dampingFactor"];
 
-                this.controls.screenSpacePanning = false;
+                this.controls.screenSpacePanning = this.controlParams["screenSpacePanning"];
 
-                this.controls.minDistance = 1000;
-                this.controls.maxDistance = 5000;
+                this.controls.minDistance = this.controlParams["minDistance"];
+                this.controls.maxDistance = this.controlParams["maxDistance"];
 
-                this.controls.maxPolarAngle = Math.PI / 2;
+                this.controls.maxPolarAngle = this.controlParams["maxPolarAngle"];
                 this.controls.type = 'orbit';
 
             } else {

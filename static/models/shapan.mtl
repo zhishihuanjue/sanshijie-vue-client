@@ -1,0 +1,266 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# 创建的文件:15.10.2018 13:55:06
+
+newmtl 03___Default
+	Ns 10.00
+	Ni 1.50
+	d 1.00
+	Tr 0.00
+	Tf 1.00 1.00 1.00 
+	illum 2
+	Ka 0.59 0.59 0.59
+	Kd 0.59 0.59 0.59
+	Ks 0.00 0.00 0.00
+	Ke 0.00 0.00 0.00
+	map_Ka D:\ZXproject\LanZhou\test1\texture\5b027195e3d0f.jpg
+	map_Kd D:\ZXproject\LanZhou\test1\texture\5b027195e3d0f.jpg
+
+newmtl Material__33
+	Ns 10.00
+	Ni 1.50
+	d 1.00
+	Tr 0.00
+	Tf 1.00 1.00 1.00 
+	illum 2
+	Ka 0.59 0.59 0.59
+	Kd 0.59 0.59 0.59
+	Ks 0.18 0.18 0.18
+	Ke 0.00 0.00 0.00
+	map_Ka D:\ZXproject\LanZhou\test1\texture\5b027192c4100.jpg
+	map_Kd D:\ZXproject\LanZhou\test1\texture\5b027192c4100.jpg
+
+newmtl Material__25
+	Ns 10.00
+	Ni 1.50
+	d 1.00
+	Tr 0.00
+	Tf 1.00 1.00 1.00 
+	illum 2
+	Ka 0.59 0.59 0.59
+	Kd 0.59 0.59 0.59
+	Ks 0.18 0.18 0.18
+	Ke 0.00 0.00 0.00
+	map_Ka D:\ZXproject\LanZhou\test1\texture\5b02719beaf2a.jpg
+	map_Kd D:\ZXproject\LanZhou\test1\texture\5b02719beaf2a.jpg
+
+newmtl Material__35
+	Ns 10.00
+	Ni 1.50
+	d 1.00
+	Tr 0.00
+	Tf 1.00 1.00 1.00 
+	illum 2
+	Ka 0.59 0.59 0.59
+	Kd 0.59 0.59 0.59
+	Ks 0.18 0.18 0.18
+	Ke 0.00 0.00 0.00
+	map_Ka D:\ZXproject\LanZhou\test1\texture\5b02719144892.jpg
+	map_Kd D:\ZXproject\LanZhou\test1\texture\5b02719144892.jpg
+
+newmtl 08___Default
+	Ns 10.00
+	Ni 1.50
+	d 1.00
+	Tr 0.00
+	Tf 1.00 1.00 1.00 
+	illum 2
+	Ka 0.59 0.59 0.59
+	Kd 0.59 0.59 0.59
+	Ks 0.00 0.00 0.00
+	Ke 0.00 0.00 0.00
+	map_Ka D:\ZXproject\LanZhou\test1\texture\5b027193153ee.jpg
+	map_Kd D:\ZXproject\LanZhou\test1\texture\5b027193153ee.jpg
+
+newmtl Material__29
+	Ns 10.00
+	Ni 1.50
+	d 1.00
+	Tr 0.00
+	Tf 1.00 1.00 1.00 
+	illum 2
+	Ka 0.59 0.59 0.59
+	Kd 0.59 0.59 0.59
+	Ks 0.18 0.18 0.18
+	Ke 0.00 0.00 0.00
+	map_Ka D:\ZXproject\LanZhou\test1\texture\5b027194e6f3b.jpg
+	map_Kd D:\ZXproject\LanZhou\test1\texture\5b027194e6f3b.jpg
+
+newmtl Material__36
+	Ns 10.00
+	Ni 1.50
+	d 1.00
+	Tr 0.00
+	Tf 1.00 1.00 1.00 
+	illum 2
+	Ka 0.59 0.59 0.59
+	Kd 0.59 0.59 0.59
+	Ks 0.18 0.18 0.18
+	Ke 0.00 0.00 0.00
+	map_Ka D:\ZXproject\LanZhou\test1\texture\5b027190be48c.jpg
+	map_Kd D:\ZXproject\LanZhou\test1\texture\5b027190be48c.jpg
+
+newmtl Material__34
+	Ns 10.00
+	Ni 1.50
+	d 1.00
+	Tr 0.00
+	Tf 1.00 1.00 1.00 
+	illum 2
+	Ka 0.59 0.59 0.59
+	Kd 0.59 0.59 0.59
+	Ks 0.18 0.18 0.18
+	Ke 0.00 0.00 0.00
+	map_Ka D:\ZXproject\LanZhou\test1\texture\5b027192140be.jpg
+	map_Kd D:\ZXproject\LanZhou\test1\texture\5b027192140be.jpg
+
+newmtl Material__28
+	Ns 10.00
+	Ni 1.50
+	d 1.00
+	Tr 0.00
+	Tf 1.00 1.00 1.00 
+	illum 2
+	Ka 0.59 0.59 0.59
+	Kd 0.59 0.59 0.59
+	Ks 0.18 0.18 0.18
+	Ke 0.00 0.00 0.00
+	map_Ka D:\ZXproject\LanZhou\test1\texture\5b027195a5709.jpg
+	map_Kd D:\ZXproject\LanZhou\test1\texture\5b027195a5709.jpg
+
+newmtl _rongchuangmaxDIDA_default
+	Ns 10.00
+	Ni 1.50
+	d 1.00
+	Tr 0.00
+	Tf 1.00 1.00 1.00 
+	illum 2
+	Ka 0.39 0.39 0.39
+	Kd 0.39 0.39 0.39
+	Ks 0.01 0.01 0.01
+	Ke 0.00 0.00 0.00
+
+newmtl 12___Default
+	Ns 10.00
+	Ni 1.50
+	d 1.00
+	Tr 0.00
+	Tf 1.00 1.00 1.00 
+	illum 2
+	Ka 0.59 0.59 0.59
+	Kd 0.59 0.59 0.59
+	Ks 0.00 0.00 0.00
+	Ke 0.00 0.00 0.00
+	map_Ka D:\ZXproject\LanZhou\test1\texture\5b02719251db4.jpg
+	map_Kd D:\ZXproject\LanZhou\test1\texture\5b02719251db4.jpg
+
+newmtl 07___Default
+	Ns 10.00
+	Ni 1.50
+	d 1.00
+	Tr 0.00
+	Tf 1.00 1.00 1.00 
+	illum 2
+	Ka 0.59 0.59 0.59
+	Kd 0.59 0.59 0.59
+	Ks 0.00 0.00 0.00
+	Ke 0.00 0.00 0.00
+	map_Ka D:\ZXproject\LanZhou\test1\texture\5b02719b779f2.jpg
+	map_Kd D:\ZXproject\LanZhou\test1\texture\5b02719b779f2.jpg
+
+newmtl Material__30
+	Ns 10.00
+	Ni 1.50
+	d 1.00
+	Tr 0.00
+	Tf 1.00 1.00 1.00 
+	illum 2
+	Ka 0.59 0.59 0.59
+	Kd 0.59 0.59 0.59
+	Ks 0.18 0.18 0.18
+	Ke 0.00 0.00 0.00
+	map_Ka D:\ZXproject\LanZhou\test1\texture\5b02719417881.jpg
+	map_Kd D:\ZXproject\LanZhou\test1\texture\5b02719417881.jpg
+
+newmtl Material__31
+	Ns 10.00
+	Ni 1.50
+	d 1.00
+	Tr 0.00
+	Tf 1.00 1.00 1.00 
+	illum 2
+	Ka 0.59 0.59 0.59
+	Kd 0.59 0.59 0.59
+	Ks 0.18 0.18 0.18
+	Ke 0.00 0.00 0.00
+	map_Ka D:\ZXproject\LanZhou\test1\texture\5b02719357486.jpg
+	map_Kd D:\ZXproject\LanZhou\test1\texture\5b02719357486.jpg
+
+newmtl 05___Default
+	Ns 10.00
+	Ni 1.50
+	d 1.00
+	Tr 0.00
+	Tf 1.00 1.00 1.00 
+	illum 2
+	Ka 0.59 0.59 0.59
+	Kd 0.59 0.59 0.59
+	Ks 0.00 0.00 0.00
+	Ke 0.00 0.00 0.00
+	map_Ka D:\ZXproject\LanZhou\test1\texture\5b02719953209.jpg
+	map_Kd D:\ZXproject\LanZhou\test1\texture\5b02719953209.jpg
+
+newmtl 24___Default
+	Ns 10.00
+	Ni 1.50
+	d 0.98
+	Tr 0.02
+	Tf 0.98 0.98 0.98 
+	illum 2
+	Ka 0.59 0.59 0.59
+	Kd 0.59 0.59 0.59
+	Ks 0.00 0.00 0.00
+	Ke 0.00 0.00 0.00
+	map_Ka D:\ZXproject\LanZhou\test1\texture\5b02719675a1d.png
+	map_Kd D:\ZXproject\LanZhou\test1\texture\5b02719675a1d.png
+
+newmtl 06___Default
+	Ns 10.00
+	Ni 1.50
+	d 1.00
+	Tr 0.00
+	Tf 1.00 1.00 1.00 
+	illum 2
+	Ka 0.59 0.59 0.59
+	Kd 0.59 0.59 0.59
+	Ks 0.00 0.00 0.00
+	Ke 0.00 0.00 0.00
+	map_Ka D:\ZXproject\LanZhou\test1\texture\5b02719c22970.jpg
+	map_Kd D:\ZXproject\LanZhou\test1\texture\5b02719c22970.jpg
+
+newmtl 04___Default
+	Ns 10.00
+	Ni 1.50
+	d 1.00
+	Tr 0.00
+	Tf 1.00 1.00 1.00 
+	illum 2
+	Ka 0.59 0.59 0.59
+	Kd 0.59 0.59 0.59
+	Ks 0.00 0.00 0.00
+	Ke 0.00 0.00 0.00
+	map_Ka D:\ZXproject\LanZhou\test1\texture\5b02719629991.jpg
+	map_Kd D:\ZXproject\LanZhou\test1\texture\5b02719629991.jpg
+
+newmtl 02___Default
+	Ns 10.00
+	Ni 1.50
+	d 1.00
+	Tr 0.00
+	Tf 1.00 1.00 1.00 
+	illum 2
+	Ka 0.59 0.59 0.59
+	Kd 0.59 0.59 0.59
+	Ks 0.00 0.00 0.00
+	Ke 0.00 0.00 0.00
+	map_Ka D:\ZXproject\LanZhou\test1\texture\5b027196b26d5.jpg
+	map_Kd D:\ZXproject\LanZhou\test1\texture\5b027196b26d5.jpg

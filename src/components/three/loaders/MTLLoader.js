@@ -361,6 +361,11 @@ MTLLoader.MaterialCreator.prototype = {
             // Absolute URL
             if ( /^https?:\/\//i.test( url ) ) return url;
 
+            //author @ZX
+            let ss = url.split("\/");
+			ss = ss[ss.length - 1].split("\\");
+			url = ss[ss.length - 1];
+
             return baseUrl + url;
 
         }
