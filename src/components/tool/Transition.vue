@@ -39,16 +39,17 @@ export default {
 	width: 100%;
 }
 .detail-enter-active, .detail-leave-active {
-  transition:  1.0s
+  transition:  all .6s ease;
 }
 .detail-enter, .detail-leave-to {
   transform: translateX(100%);
+  /* opacity: 0; */
 }
 .detail .img-wrapper{
 	position: relative;
 	width: 100%;
 	height: 0;
-    z-index: 2;
+  z-index: 3;
 }
 .detail .img-wrapper .close-bt{
 	width: 1.5rem /* 30/20 */;

@@ -30,7 +30,8 @@ export default new Router({
     },
     {
       path: '/login',
-      component: Login
+      component: Login,
+      // component: resolve => require(['@/components/personalCenter/Login'],resolve)
     },
     {
       path: '/loginRegister',

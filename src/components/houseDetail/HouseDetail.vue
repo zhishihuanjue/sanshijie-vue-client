@@ -104,7 +104,7 @@ import Operation from '../house/Operation'
 }
 
 .house-detail-enter-active, .house-detail-leave-active {
-  transition:  1.0s
+  transition:  all .6s ease;
 }
 .house-detail-enter, .house-detail-leave-to {
   transform: translateX(100%);

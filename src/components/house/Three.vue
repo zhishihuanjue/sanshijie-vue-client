@@ -1,6 +1,5 @@
 <template>
     <div class="three">
-        <app-header :title="house.type"></app-header>
         <div
             v-if="house.src && house.mtl"
         >
@@ -98,23 +97,8 @@ export default {
     }
 }
 
-.three .img-wrapper{
-	position: relative;
-	width: 100%;
-	height: 0;
-}
-
-.three .img-wrapper .close-bt{
-	width: 1.5rem /* 30/20 */;
-	height: 1.5rem /* 30/20 */;
-	position: absolute;
-	left: .5rem /* 10/20 */;
-	top: .5rem /* 10/20 */;
-	text-align: center;
-	font-size: 1.5rem /* 30/20 */;
-	color: white;
-	/* background: #7f7f7f; */
-	border-radius: 50%;
+.three{
+	
 }
 
 .tip{
