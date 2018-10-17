@@ -1,29 +1,24 @@
 <template>
-	<transition name="three">
-		<div class="three" ref="three" v-show="showFlag">
-			<app-header :title="house.type"></app-header>
-            <div class="img-wrapper">
-                <img class="close-bt" src="./img/close.png" @click.stop.prevent="closeView" />
-            </div>
-            <div
-                v-if="house.src && house.mtl"
-            >
-               <model-obj
-                    :backgroundAlpha="0"
-                    :src=house.src
-                    :mtl=house.mtl
-                    :hasSkyBox=hasSkyBox
-                    :cameraPosition=cameraPosition
-                    :controlParams=controlParams
-                    @on-click="onClick"
-                    @on-load="onLoad"
-                    @on-progress="onProgress"
-                ></model-obj>
-                <div class="example-loading" v-show="loading"></div>
-            </div>
-            <div class="tip" v-else>此户型还没有上传3D模型，敬请期待。</div>
-		</div>
-  </transition>
+    <div class="three">
+        <app-header :title="house.type"></app-header>
+        <div
+            v-if="house.src && house.mtl"
+        >
+            <model-obj
+                :backgroundAlpha="0"
+                :src=house.src
+                :mtl=house.mtl
+                :hasSkyBox=hasSkyBox
+                :cameraPosition=cameraPosition
+                :controlParams=controlParams
+                @on-click="onClick"
+                @on-load="onLoad"
+                @on-progress="onProgress"
+            ></model-obj>
+            <div class="example-loading" v-show="loading"></div>
+        </div>
+        <div class="tip" v-else>此户型还没有上传3D模型，敬请期待。</div>
+    </div>
 </template>
 
 <script>
@@ -44,8 +39,7 @@ export default {
                 minDistance:2000,
                 maxDistance:4000,
                 maxPolarAngle:Math.PI / 2
-            },
-            showFlag:false
+            }
         }
     },
     props:{
@@ -54,12 +48,6 @@ export default {
       }
     },
     methods:{
-        showView(){
-            this.showFlag = true
-        },
-        closeView(){
-            this.showFlag = false
-        },
         onClick(intersected){
             console.log(intersected)
             let name = intersected.object.name
@@ -108,24 +96,6 @@ export default {
     100%{
         transform: rotate(360deg);
     }
-}
-
-.three{
-	position: fixed;
-	left: 0;
-	top: 0;
-	bottom: 51px;
-	background: white;
-	width: 100%;
-	/* z-index: 90; */
-}
-
-.three-enter-active, .three-leave-active {
-  transition:  1.0s
-}
-
-.three-enter, .three-leave-to {
-  transform: translateX(100%);
 }
 
 .three .img-wrapper{

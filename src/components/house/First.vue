@@ -1,14 +1,9 @@
 <template>
-	<transition name="first">
-		<div class="first" ref="first" v-show="showFlag">
-			<app-header :title="house.type"></app-header>
-            <div class="img-wrapper">
-                <img class="close-bt" src="./img/close.png" @click.stop.prevent="closeView" />
-            </div>
-            <iframe v-if="house.firstSrc" style="width:100%;height:100%;" scrolling="no" :src="house.firstSrc"></iframe>
-            <div class="tip" v-else>此户型还没有上传漫游视图，敬请期待。</div>
-        </div>
-  </transition>
+    <div class="first">
+        <app-header :title="house.type"></app-header>
+        <iframe v-if="house.firstSrc" style="width:100%;height:100%;" scrolling="no" :src="house.firstSrc"></iframe>
+        <div class="tip" v-else>此户型还没有上传漫游视图，敬请期待。</div>
+    </div>
 </template>
 
 <script>
@@ -17,21 +12,13 @@ export default {
     name:"First",
     data(){
         return {
-            showFlag:false
+            
         }
     },
     props:{
       house:{
         type:Object
       }
-    },
-    methods:{
-        showView(){
-            this.showFlag = true
-        },
-        closeView(){
-            this.showFlag = false
-        },
     },
     components:{
         "app-header":Header
@@ -48,13 +35,6 @@ export default {
 	background: white;
 	width: 100%;
 	/* z-index: 90; */
-}
-
-.first-enter-active, .first-leave-active {
-  transition:  1.0s
-}
-.first-enter, .first-leave-to {
-  transform: translateX(100%);
 }
 
 .first .img-wrapper{

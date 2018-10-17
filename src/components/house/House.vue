@@ -7,7 +7,7 @@
         <li 
           v-for="(house,index) in houses" 
           :key="index" 
-          @click="showDetail('',house)"
+          @click="showDetail('houseView',house)"
           class="house-item">
           <div class="icon" :style="head_bg(house.img)"></div>
           <div class="content">
@@ -36,12 +36,16 @@
       </ul>
     </div>
     <!-- 户型详情 -->
-    <app-transition  ref="houseView">
+    <!-- <app-transition  ref="houseView">
       <app-house-detail slot="content" :house="selectHouse"></app-house-detail>
+    </app-transition> -->
+    <app-house-detail :house="selectHouse" ref="houseView"></app-house-detail>
+    <app-transition  ref="threeView">
+      <app-three slot="content" :house="selectHouse"></app-three>
     </app-transition>
-    <!-- <app-house-detail :house="selectHouse" ref="houseView"></app-house-detail> -->
-    <app-three :house="selectHouse" ref="threeView"></app-three>
-    <app-first :house="selectHouse" ref="firstView"></app-first>
+    <app-transition  ref="firstView">
+      <app-first slot="content" :house="selectHouse"></app-first>
+    </app-transition>
   </div>
 </template>
 
@@ -115,30 +119,17 @@ export default {
     head_bg(imgName){
       return "background-image: url(" + imgName + ");"
     },
-    showDetail(house){
+    showDetail(type,house){
       this.selectHouse = house
-
-      this.$refs.houseView.showView()
-      console.log("showDetail")
+      this.$refs[type].showView()
     },
     operationClick(params){
-      if(params.item===1){
-        this.showThree(params.house)
-      } else if(params.item===2){
-        this.showFirst(params.house)
-      } else if(params.item===3){
+      if(params.type === "collectView"){
         this.collect(params.house)
+        return;
       }
-    },
-    showThree(house){
-      this.selectHouse = house
-      this.$refs.threeView.showView()
-      console.log("showThree")
-    },
-    showFirst(house){
-      this.selectHouse = house
-      this.$refs.firstView.showView()
-      console.log("showFirst")
+      this.selectHouse = params.house
+      this.$refs[params.type].showView()
     },
     collect(house){
       console.log(house)

@@ -20,7 +20,7 @@
           <mt-cell title="户型"  to="/nav"  is-link></mt-cell>
         </div>
         
-        <mt-cell title=""></mt-cell>
+        <app-split></app-split>
         <div @click.stop.prevent="showDetail('codeView')">
           <mt-cell title="推荐二维码" is-link></mt-cell>
         </div>
@@ -40,7 +40,7 @@
       </app-transition>
       <app-transition  ref="codeView">
         <app-code slot="content"></app-code>
-      </app-transition> 
+      </app-transition>
   </div>
 </template>
 
@@ -49,6 +49,7 @@ import Transition from '../tool/Transition'
 import LoginRegister from './LoginRegister'
 import Setting from './Setting'
 import Code from './Code'
+import Split from '../tool/Split'
 export default {
   name: 'PersonalCenter',
   data () {
@@ -72,7 +73,8 @@ export default {
     "app-transition":Transition,
     "app-loginRegister":LoginRegister,
     "app-setting":Setting,
-    "app-code":Code
+    "app-code":Code,
+    "app-split":Split
   }
 }
 </script>

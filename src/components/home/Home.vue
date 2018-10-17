@@ -15,7 +15,8 @@
           <button class="next-button flex-item" @click.stop="next"></button>
       </div>
     </div>
-    <span class="introduce">基本信息</span>
+    <app-split></app-split>
+    <!-- <span class="introduce">基本信息</span> -->
     <div class="container" ref="page-content">
       <ul>
         <li v-for="(item,index) in images" :key="index">
@@ -29,6 +30,7 @@
 
 <script>
 import EndLine from "../tool/EndLine"
+import Split from "../tool/Split"
 import Header from "../header/Header"
 
 // import BScroll from 'better-scroll'
@@ -54,7 +56,8 @@ export default {
   },
   components:{
     "app-endLine":EndLine,
-    "app-header":Header
+    "app-header":Header,
+    "app-split":Split
   },
   methods: {
       prev: function () {

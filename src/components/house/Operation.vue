@@ -24,7 +24,15 @@ export default {
 	},
 	methods:{
 		fn(item){
-			this.$emit('operationClick', {house:this.house,item:item});
+			let type = ""
+			if(item===1){
+				type = "threeView"
+			} else if(item===2){
+				type = "firstView"
+			} else if(item===3){
+				type = "collectView"
+			}
+			this.$emit('operationClick', {house:this.house,type:type});
 		}
 	}
 }
