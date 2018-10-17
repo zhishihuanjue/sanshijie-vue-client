@@ -122,7 +122,7 @@ export default {
 }
 .introduce{
   display: inline-block;
-  font-size: .6rem /* 12/20 */;
-  padding: 4px;
+  font-size: .8rem /* 16/20 */;
+  padding: .3rem /* 6/20 */;
 }
 </style>

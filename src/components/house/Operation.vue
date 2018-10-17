@@ -1,11 +1,11 @@
 <template>
 	<div class="operation">
 		<div
-				v-for="(item,index) in operation"
-				:key="index"
-        class="item"
-        @click.stop.prevent="fn(item)"
-				:class="{'_3d':item==1,firstView:item==2,collect:item==3}"
+			v-for="(item,index) in operation"
+			:key="index"
+        	class="item"
+        	@click.stop.prevent="fn(item)"
+			:class="{'_3d':item==1,firstView:item==2,collect:item==3}"
         >
         <i class="bg"></i>
       </div>
@@ -15,15 +15,18 @@
 <script>
 export default {
     props:{
-      operation:{
-        type:Array
-      }
-    },
-		methods:{
-			fn(item){
-				console.log(item)
-			}
-    }
+		operation:{
+			type:Array
+		},
+		house:{
+			type:Object
+		}
+	},
+	methods:{
+		fn(item){
+			this.$emit('operationClick', {house:this.house,item:item});
+		}
+	}
 }
 </script>
 
@@ -31,17 +34,17 @@ export default {
 
 .operation{
 	font-size: 0;
-	width: 1.3rem /* 26/20 */;
+	width: 1.5rem /* 30/20 */;
 }
 
 .operation .item .bg{
-	width: 20px;
-	height: 20px;
+	width: 1.2rem /* 24/20 */;
+	height: 1.2rem /* 24/20 */;
 	border-radius: 50%;
 	background: #f0f0f0;
-  background-repeat:no-repeat; 
-  background-size:80% 80%;
-  -moz-background-size:80% 80%;
+	background-repeat:no-repeat; 
+	background-size:80% 80%;
+	-moz-background-size:80% 80%;
 	background-position:center center;
 	position: absolute;
 	left: 3px;
@@ -50,22 +53,21 @@ export default {
 }
 
 .operation ._3d .bg{
-		background-image:url(3d.png);
+	background-image:url(./img/3d.png);
 }
 
 .operation .firstView .bg{
-	background-image:url(firstView.png);
+	background-image:url(./img/firstView.png);
 }
 
 .operation .collect .bg{
-	background-image:url(collect.png);
+	background-image:url(./img/collect.png);
 }
 
 .operation .item{
 	display: inline-block;
-	width: 1.3rem /* 26/20 */;
-	height: 1.3rem /* 26/20 */;
-	font-size: 1.3rem /* 26/20 */;
+	width: 1.5rem /* 30/20 */;
+	height: 1.5rem /* 30/20 */;
 	color: #ffd161;
 	position: relative;
 }

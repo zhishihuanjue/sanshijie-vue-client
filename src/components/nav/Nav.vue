@@ -7,7 +7,7 @@
         <div>
             <mt-cell class="page-part" title="当前选中" :value="selected" />
         </div> -->
-        <app-personalCenterButton></app-personalCenterButton>
+        <!-- <app-personalCenterButton></app-personalCenterButton> -->
         <mt-tab-container class="page-tabbar-container" v-model="selected">
             <mt-tab-container-item id="首页">
                 <app-home></app-home>
@@ -20,6 +20,9 @@
             </mt-tab-container-item>
             <mt-tab-container-item id="预约">
                 <app-book></app-book>
+            </mt-tab-container-item>
+            <mt-tab-container-item id="我的">
+                <app-personalCenter></app-personalCenter>
             </mt-tab-container-item>
         </mt-tab-container>
     </div>
@@ -41,6 +44,10 @@
         <img slot="icon" src="../../assets/预约.png">
         预约
       </mt-tab-item>
+      <mt-tab-item id="我的">
+        <img slot="icon" src="../../assets/我的.png">
+        我的
+      </mt-tab-item>
     </mt-tabbar>
   </div>
 </template>
@@ -50,7 +57,8 @@ import Home from '../home/Home'
 import Sandboxie from '../sandboxie/Sandboxie'
 import House from '../house/House'
 import Book from '../book/Book'
-import PersonalCenterButton from '../personalCenter/PersonalCenterButton'
+// import PersonalCenterButton from '../personalCenter/PersonalCenterButton'
+import PersonalCenter from '../personalCenter/PersonalCenter'
 
 export default {
   name: 'page-tabbar',
@@ -64,7 +72,8 @@ export default {
       "app-sandboxie":Sandboxie,
       "app-house":House,
       "app-book":Book,
-      "app-personalCenterButton":PersonalCenterButton
+      // "app-personalCenterButton":PersonalCenterButton,
+      "app-personalCenter":PersonalCenter
   }
 };
 </script>

@@ -7,10 +7,10 @@
         <mt-button type="default" class="mySmallButton" @click="getCaptcha" v-if="!captchaStatus">获取验证码</mt-button>
         <mt-button type="default" class="mySmallButton" :disabled="captchaStatus" v-else>重新获取({{time}}s)</mt-button>
     </mt-field>
-    <mt-button type="default" plain size="large" @click="register">注册</mt-button>
+    <mt-button type="default" plain size="large" @click.stop.prevent="register">注册</mt-button>
     <div class="other">
       点击“注册”即表示您同意
-      <a @click.prevent="agreement">《三视界使用协议》</a>
+      <a @click.stop.prevent="agreement">《三视界使用协议》</a>
     </div>
   </div>
 </template>
@@ -89,11 +89,11 @@ export default {
 }
 .register .mySmallButton{
   font-size: .6rem /* 12/20 */;
-  padding: .1rem /* 2/20 */;
+  padding: .15rem /* 3/20 */;
   height: 1.2rem /* 24/20 */;
 }
 .register .other{
-  padding: .5rem /* 10/20 */ 0 0 0;
+  padding: .6rem /* 12/20 */ 0 0 0;
   font-size: .6rem /* 12/20 */;
 }
 .register .other a{

@@ -1,89 +1,53 @@
 <template>
 	<transition name="house-detail">
-     <div class="house" ref="houseView" v-show="showFlag">
-      <div class="house-wrapper">
-        <div class="house-content">
-          <div class="img-wrapper">
-            <img class="house-img" :src="house.picture"/>
-            <span 
-              class="close-bt icon-close"
-              @click="closeView"
-              ></span>
-            <img class="share-bt" src="./img/share.png" />
-            <img class="more-bt" src="./img/more.png" />
-          </div>
+		<div class="house-detail" ref="houseView" v-show="showFlag">
+			<div class="house-wrapper">
+				<div class="house-content">
+					<div class="img-wrapper">
+						<img class="house-img" :src="house.img"/>
+						<img class="close-bt" src="./img/close.png" @click.stop.prevent="closeView" />
+						<img class="share-bt" src="./img/share.png" />
+						<img class="more-bt" src="./img/more.png" />
+					</div>
 
-           <div class="content-wrapper">
-              <h3 class="name">{{house.name}}</h3>
-              <p class="saled">{{house.month_saled_content}}</p>
-              <img class="product" v-show="house.product_label_picture" :src="house.product_label_picture"/>
-              <p class="price">
-                <span class="text">￥{{house.min_price}}</span>
-                <span class="unit">/{{house.unit}}</span>
-              </p>
+					<div class="content-wrapper">
+						<h3 class="type">{{house.type}}</h3>
+						<div class="extra">
+							<span class="saled">户型：</span>
+							<span class="praise">{{house.houseType}}</span>
+						</div>
+						<div class="extra">
+							<span class="saled">面积：</span>
+							<span class="praise">{{house.area | areaFilter}}</span><sup>2</sup>
+						</div>
+						<div class="extra">
+							<span class="saled">单价：</span>
+							<span class="praise">{{house.unitPrice | unitPriceFilter}}</span><sup>2</sup>
+						</div>
+						<div class="extra">
+							<span class="saled">所属楼幢：</span>
+							<span class="praise">{{house.building}}</span>
+						</div>
+						<div class="operation-wrapper">
+							<app-operation :operation="house.operation"></app-operation>
+						</div>
+					</div>
+				</div>
 
-              <div class="cartcontrol-wrapper">
-                <!-- <CartControl :house="house"></CartControl> -->
-              </div>
-              <div 
-                class="buy"
-                v-show="!house.count || house.count == 0">
-                选规格
-              </div>
-            </div>
-        </div>
-
-        <!-- 外卖评价 -->
-        <div class="rating-wrapper">
-          <!-- 评价头部 -->
-          <div class="rating-title">
-            <div class="like-ratio" v-if="house.rating">
-              <span class="title">{{house.rating.title}}</span>
-              <span class="retio">
-                (
-                  {{house.rating.like_ratio_desc}}
-                  <i>{{house.rating.like_ratio}}</i>
-                )
-              </span>
-            </div>
-            <div class="snd-title" v-if="house.rating">
-                  <span class="text">{{house.rating.snd_title}}</span> 
-                  <span class="icon icon-keyboard_arrow_right"></span> 
-            </div>
-          </div>
-          <ul class="rating-content" v-if="house.rating">
-            <li 
-              v-for="(comment,index) in house.rating.comment_list" 
-              :key="index"
-              class="comment-item"
-              >
-              <div class="comment-header">
-                <img :src="comment.user_icon" v-if="comment.user_icon" />
-                <img src="./img/anonymity.png" v-if="!comment.user_icon"  />
-              </div>
-              <div class="comment-main">
-                <div class="user">
-                  {{comment.user_name}}
-                </div>
-                <div class="time">
-                  {{comment.comment_time}}
-                </div>
-                <div class="content">
-                  {{comment.comment_content}}
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-
-      </div>
-    </div>
+				<!-- 其他说明 -->
+				<div class="rating-wrapper">
+					<div class="rating-title">户型介绍</div>
+					<div v-if="house.desc" class="comment-item" v-for="(item,index) in house.desc" :key="index">
+						{{item}}
+					</div>
+				</div>
+			</div>
+		</div>
   </transition>
 </template>
 
 <script>
-// import BScroll from 'better-scroll'
+import BScroll from 'better-scroll'
 import Operation from '../house/Operation'
 	export default {
     name:"HouseDetail",
@@ -99,27 +63,44 @@ import Operation from '../house/Operation'
     },
     methods:{
       showView(){
-        this.showFlag = true
+				this.showFlag = true
+				this.$nextTick(() => {
+          if(!this.scroll){
+            this.scroll = new BScroll(this.$refs.houseView,{
+              click:true
+            })
+          }else{
+            this.scroll.refresh()
+          }
+        })
       },
       closeView(){
         this.showFlag = false
       }
     },
     components:{
-      Operation
-    }
+      "app-operation":Operation
+		},
+		filters:{
+			areaFilter(area){
+				return ''+area+'m'
+			},
+			unitPriceFilter(unitPrice){
+				return ''+unitPrice+'元/m'
+			}
+		}
 	}
 </script>
 
 <style>
-.house{
+.house-detail{
 	position: fixed;
 	left: 0;
 	top: 0;
-	bottom: 51px;
+	bottom: 63px;
 	background: white;
 	width: 100%;
-	z-index: 90;
+	/* z-index: 90; */
 }
 
 .house-detail-enter-active, .house-detail-leave-active {
@@ -127,10 +108,6 @@ import Operation from '../house/Operation'
 }
 .house-detail-enter, .house-detail-leave-to {
   transform: translateX(100%);
-}
-
-.house .house-wrapper .house-content{
-	
 }
 
 .house .house-wrapper .house-content .img-wrapper{
@@ -148,163 +125,76 @@ import Operation from '../house/Operation'
 	height: 100%;
 }
 
-.house .house-wrapper .house-content .img-wrapper .house-img{
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	height: 100%;
-}
 .house .house-wrapper .house-content .img-wrapper .close-bt{
-	width: 30px;
-	height: 30px;
+	width: 1.5rem /* 30/20 */;
+	height: 1.5rem /* 30/20 */;
 	position: absolute;
-	left: 10px;
-	top: 10px;
+	left: .5rem /* 10/20 */;
+	top: .5rem /* 10/20 */;
 	text-align: center;
-	font-size: 30px;
+	font-size: 1.5rem /* 30/20 */;
 	color: white;
-	background: #7f7f7f;
+	/* background: #7f7f7f; */
 	border-radius: 50%;
 }
 .house .house-wrapper .house-content .img-wrapper .share-bt,
-.house .house-wrapper .house-content .img-wrapper .more-bt
-{
-	width: 30px;
-	height: 30px;
+.house .house-wrapper .house-content .img-wrapper .more-bt{
+	width: 1.5rem /* 30/20 */;
+	height: 1.5rem /* 30/20 */;
 	position: absolute;
-	top: 10px;
+	top: .5rem /* 10/20 */;
 }
 .house .house-wrapper .house-content .img-wrapper .share-bt{
-	right: 50px;
+	right: 2.5rem /* 50/20 */;
 }
 .house .house-wrapper .house-content .img-wrapper .more-bt{
-	right: 10px;
+	right: .5rem /* 10/20 */;
 }
 
 .house .house-wrapper .house-content .content-wrapper{
-	padding: 0 0 16px 16px;
+	padding: 0 .6rem /* 12/20 */ 0 .6rem /* 12/20 */;
 	position: relative;
 }
-.house .house-wrapper .house-content .content-wrapper .name{
-	font-size: 15px;
+.house .house-wrapper .house-content .content-wrapper .type{
+	font-size: .9rem /* 18/20 */;
 	color: #333333;
-	line-height: 30px;
+	line-height: 1.5rem /* 30/20 */;
 	font-weight: bold;
 }
-.house .house-wrapper .house-content .content-wrapper .saled{
-	font-size: 11px;
-	color: #9d9d9d;
-	margin-bottom: 6px;
+.house .house-wrapper .house-content .content-wrapper .extra{
+	font-size: .7rem /* 14/20 */;
+	color: #333;
+	padding: 0 .3rem /* 6/20 */ .3rem /* 6/20 */ .3rem /* 6/20 */;
 }
-.house .house-wrapper .house-content .content-wrapper .product{
-	height: 15px;
-	margin-bottom: 16px;
+.house .house-wrapper .house-content .content-wrapper .saled,
+.house .house-wrapper .house-content .content-wrapper .praise{
+	font-size: .8rem /* 16/20 */;
+	color: #000;
+	margin-bottom: .3rem /* 6/20 */;
 }
-.house .house-wrapper .house-content .content-wrapper .price{
-	font-size: 0;
-}
-.house .house-wrapper .house-content .content-wrapper .price .text{
-	font-size: 17px;
-	color: #FB4E44;
-}
-.house .house-wrapper .house-content .content-wrapper .price .unit{
-	font-size: 11px;
-	color: #9D9D9D;
-}
-.house .house-wrapper .house-content .cartcontrol-wrapper{
+
+.house .house-wrapper .house-content .operation-wrapper{
 	position: absolute;
-	right: 12px;
-	bottom: 10px;
-	padding: 2px;
-}
-.house .house-wrapper .house-content .buy{
-	width: 64px;
-	height: 30px;
-	font-size: 12px;
-	line-height: 30px;
-	text-align: center;
-	background: #FFD161;
-	border-radius: 30px;
-	position: absolute;
-	right: 12px;
-	bottom: 10px;
+	right: .9rem /* 18/20 */;
+	bottom: 0;
 }
 
 .house .house-wrapper .rating-wrapper{
-	padding-left: 16px;
+	padding:.6rem /* 12/20 */;
 }
 .house .house-wrapper .rating-wrapper .rating-title{
-	padding: 16px 16px 16px 0;
+	font-size: .9rem /* 18/20 */;
+	font-weight: bold;
 }
-.house .house-wrapper .rating-wrapper .rating-title .like-ratio{
-	float: left;
-	font-size: 0;
-}
-.house .house-wrapper .rating-wrapper .rating-title .like-ratio .title{
-	font-size: 13px;
-}
-.house .house-wrapper .rating-wrapper .rating-title .like-ratio .ratio{
-	font-size: 11px;
-}
-.house .house-wrapper .rating-wrapper .rating-title .like-ratio .ratio i{
-	color: #FB4E44;
-	font-size: 11px;
-}
-
-.house .house-wrapper .rating-wrapper .rating-title .snd-title{
-	float: right;
-	font-size: 0;
-}
-.house .house-wrapper .rating-wrapper .rating-title .snd-title .text,
-.house .house-wrapper .rating-wrapper .rating-title .snd-title .icon
-{
-	font-size: 13px;
-	color: #9D9D9D;
-	display: inline-block;
-}
-.house .house-wrapper .rating-wrapper .rating-title .snd-title .icon{
-	margin-left: 12px;
-}
-
 
 .house .house-wrapper .rating-wrapper .comment-item{
-	padding: 15px 14px 17px 0;
+	padding: .3rem /* 6/20 */;
 	border-bottom: 1px solid #F4F4F4;
 	width: 100%;
 	box-sizing: border-box;
 	display: flex;
-}
-.house .house-wrapper .rating-wrapper .comment-item .comment-header{
-	flex: 0 0 41px;
-	margin-right: 10px;
-}
-.house .house-wrapper .rating-wrapper .comment-item .comment-header img{
-	width: 41px;
-	height: 41px;
-	border-radius: 50%;
-}
-
-.house .house-wrapper .rating-wrapper .comment-item .comment-main{
-	flex: 1;
-	margin-top: 6px;
-}
-.house .house-wrapper .rating-wrapper .comment-item .comment-main .user{
-	width: 50%;
-	float: left;
-	font-size: 12px;
-	color: #333333;
-}
-.house .house-wrapper .rating-wrapper .comment-item .comment-main .time{
-	width: 50%;
-	float: right;
-	text-align: right;
-	font-size: 10px;
-	color: #666666;
-}
-.house .house-wrapper .rating-wrapper .comment-item .comment-main .content{
-	margin-top: 17px;
-	font-size: 13px;
-	line-height: 19px;
+	font-size: .8rem /* 16/20 */;
+	line-height: 1.2rem /* 24/20 */;
+	text-indent:1.6rem /* 32/20 */;
 }
 </style>

@@ -51,15 +51,15 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .login{
-  margin-top: .3rem;
+  margin-top: .3rem /* 6/20 */;
 }
 .login .mySmallButton{
   font-size: .6rem /* 12/20 */;
-  padding: .1rem /* 2/20 */;
+  padding: .15rem /* 3/20 */;
   height: 1.2rem /* 24/20 */;
 }
 .login .other{
-  padding: .5rem /* 10/20 */ 0 0 0;
+  padding: .6rem /* 12/20 */ 0 0 0;
   font-size: .6rem /* 12/20 */;
 }
 .login .other a{

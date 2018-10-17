@@ -5,7 +5,7 @@
         <div>长按二维码加我们微信</div>
         <div>{{message}}</div>
       </div>
-    <img src="../../assets/code.jpg" alt="" class="codeImg">
+    <img :src="code" alt="" class="codeImg">
   </div>
 </template>
 
@@ -14,13 +14,17 @@ export default {
   name: 'Code',
   props:{
         message: {
-            type: String,
-            default: "寻求帮助和反馈意见"
+          type: String,
+          default: "寻求帮助和反馈意见"
         },
+        code:{
+          type:String,
+          default:"../../assets/code.jpg"
+        }
     },
   data () {
     return {
-      
+
     }
   }
 }
