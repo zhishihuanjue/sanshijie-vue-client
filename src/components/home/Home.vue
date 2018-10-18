@@ -72,9 +72,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.swipe{
-  margin-top: 40px;
-}
 .swipe-wrapper{
   width: 16rem;
   height: 8rem;

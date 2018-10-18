@@ -81,7 +81,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.personalCenter{
+  margin-top: -2rem /* 40/20 */;
+}
 .personalCenter .header{
+  height: 10rem /* 200/20 */;
   padding:1.5rem /* 30/20 */ 0 0 0;
   background-image:url(../../assets/headerBG.png);
   background-repeat:no-repeat; 
@@ -124,6 +128,6 @@ export default {
   border-bottom-right-radius:.85rem /* 17/20 */;
 }
 .personalCenter .pcBody{
-  padding: .6rem /* 12/20 */;
+  padding: .3rem /* 6/20 */;
 }
 </style>

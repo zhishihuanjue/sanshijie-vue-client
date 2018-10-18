@@ -22,7 +22,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style >
+<style scoped>
 .header{
   background-image: -webkit-gradient(linear, left top, left bottom, from(#F0F0F0), color-stop(50%, transparent));
   background-image: linear-gradient(180deg, #F0F0F0,transparent 50%);
@@ -55,7 +55,7 @@ export default {
     overflow: visible;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: inherit;
+    font-size: .6rem /* 12/20 */;
     font-weight: 400;
     -webkit-box-flex: 1;
     -ms-flex: 1;

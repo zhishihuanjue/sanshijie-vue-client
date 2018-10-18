@@ -34,9 +34,10 @@ export default {
 	position: fixed;
 	left: 0;
 	top: 0;
-	bottom: 55px;
+	bottom: 0;
 	background: white;
 	width: 100%;
+  z-index: 2;
 }
 .detail-enter-active, .detail-leave-active {
   transition:  all .6s ease;

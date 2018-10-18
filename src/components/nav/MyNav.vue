@@ -66,7 +66,8 @@ export default {
 .page-tabbar .page-wrap {
     overflow: auto;
     height: 100%;
-    padding-bottom: 55px;
+    /* padding-bottom: 55px; */
+    padding: 40px 0 55px 0;
 }
 .page-tabbar .tabbar{
     background-image: -webkit-gradient(linear, left top, left bottom, from(#F0F0F0), color-stop(50%, transparent));
@@ -89,7 +90,7 @@ export default {
 }
 .tab-item{
     display: block;
-    padding: 7px 0;
+    padding: .35rem /* 7/20 */ 0;
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
@@ -101,17 +102,54 @@ export default {
     color: #1E81D2;
 }
 .tab-item .tab-item-icon{
-    width: 24px;
-    height: 24px;
-    margin: 0 auto 5px;
+    width: 1.2rem /* 24/20 */;
+    height: 1.2rem /* 24/20 */;
+    margin: 0 auto .25rem /* 5/20 */;
     background-repeat:no-repeat; 
     background-attachment:"fixed";
     background-size:100% 200%;
     -moz-background-size:100% 200%;
+    animation:mymove1 .2s;
+    animation-timing-function:ease;
+
+    /* Safari and Chrome */
+    -webkit-animation:mymove1 .2s;
+    -webkit-animation-timing-function:ease;
 }
 .tab-item.router-link-active .tab-item-icon{
     background-position: 0 100%;
+    animation:mymove .2s;
+    animation-timing-function:ease;
+
+    /* Safari and Chrome */
+    -webkit-animation:mymove .2s;
+    -webkit-animation-timing-function:ease;
 }
+
+@keyframes mymove
+{
+    from {background-position: 0 0;}
+    to {background-position: 0 100%;}
+}
+
+@-webkit-keyframes mymove /* Safari and Chrome */
+{
+    from {background-position: 0 0;}
+    to {background-position: 0 100%;}
+}
+
+@keyframes mymove1
+{
+    from {background-position: 0 100%;}
+    to {background-position: 0 0;}
+}
+
+@-webkit-keyframes mymove1 /* Safari and Chrome */
+{
+    from {background-position: 0 100%;}
+    to {background-position: 0 0;}
+}
+
 .tab-item .tab-item-icon > *{
     display: block;
     width: 100%;
@@ -119,7 +157,7 @@ export default {
 }
 .tab-item .tab-item-lable{
     color: inherit;
-    font-size: 12px;
+    font-size: .6rem /* 12/20 */;
     line-height: 1;
 }
 </style>

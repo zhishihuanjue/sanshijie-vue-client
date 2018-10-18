@@ -73,7 +73,7 @@ export default {
           "unitPrice":"10000",
           "operation":[1,2,3],
           "img":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539623165636&di=dfe6280e32ca0e196d2f2e0ab908f746&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180104%2F363ffa1396c9451c84eadcb56c2d210b.jpeg",
-          "src":"static/models/board.obj",
+          "src":"../../../static/models/board.obj",
           "mtl":"",
           "firstSrc":"https://720yun.com/t/f93jeswwkn6",
           "desc":[
@@ -93,8 +93,8 @@ export default {
           "unitPrice":"10000",
           "operation":[1,2,3],
           "img":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539623281153&di=7398831a2993b4f3f3c9af6c0313fb1c&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20170713%2F7fae2b3125724dec934fb0da5f981b79.png",
-          "src":"static/models/rongchuangmax2.obj",
-          "mtl":"static/models/rongchuangmax2.mtl",
+          "src":"../../../static/models/rongchuangmax2.obj",
+          "mtl":"../../../static/models/rongchuangmax2.mtl",
           "firstSrc":"",
           "desc":[]
         }
