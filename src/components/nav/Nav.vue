@@ -29,23 +29,23 @@
  
     <mt-tabbar v-model="selected" fixed>
       <mt-tab-item id="首页">
-        <img slot="icon" src="../../assets/首页.png">
+        <img slot="icon" src="../../../static/images/首页.png">
         首页
       </mt-tab-item>
       <mt-tab-item id="沙盘">
-        <img slot="icon" src="../../assets/沙盘.png">
+        <img slot="icon" src="../../../static/images/沙盘.png">
         沙盘
       </mt-tab-item>
       <mt-tab-item id="户型">
-        <img slot="icon" src="../../assets/户型.png">
+        <img slot="icon" src="../../../static/images/户型.png">
         户型
       </mt-tab-item>
       <mt-tab-item id="预约">
-        <img slot="icon" src="../../assets/预约.png">
+        <img slot="icon" src="../../../static/images/预约.png">
         预约
       </mt-tab-item>
       <mt-tab-item id="我的">
-        <img slot="icon" src="../../assets/我的.png">
+        <img slot="icon" src="../../../static/images/我的.png">
         我的
       </mt-tab-item>
     </mt-tabbar>

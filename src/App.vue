@@ -4,7 +4,7 @@
     <!-- <app-three></app-three> -->
     <!-- <app-model-obj-mtl></app-model-obj-mtl> -->
     <!-- <app-three></app-three> -->
-    <!-- <app-tabbar></app-tabbar> -->
+    <!-- <app-myNav></app-myNav> -->
     <keep-alive>
       <router-view/>
     </keep-alive>
@@ -15,6 +15,7 @@
 import Three from './components/three/Three'
 import ModelObjMtl from './components/three/ModelObjMtl'
 import Nav from './components/nav/Nav'
+import MyNav from './components/nav/MyNav'
 import Home from './components/home/Home'
 export default {
   name: 'App',
@@ -22,6 +23,7 @@ export default {
     "app-three":Three,
     "app-model-obj-mtl":ModelObjMtl,
     "app-tabbar":Nav,
+    "app-myNav":MyNav,
     "app-home":Home,
   }
 }

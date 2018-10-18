@@ -22,15 +22,17 @@ export default {
 .endLine{
     margin: 10px 0 10px 0;
     text-align: center;
+    color: #737373;
 }
 .endLine .content{
     font-size: .6rem /* 12/20 */;
+    color: inherit;
 }
 .endLine .line{
     display: inline-block;
     width: 30%;
     font-size: .6rem /* 12/20 */;
-    border-top: 1px dotted #ddd;
+    border-top: 1px solid #737373;
     vertical-align: middle;
 }
 </style>

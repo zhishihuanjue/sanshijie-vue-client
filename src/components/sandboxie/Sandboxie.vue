@@ -24,8 +24,8 @@
         name:"Sandboxie",
         data(){
             return {
-                src : "static/models/shapan.obj",
-                mtl : "static/models/shapan.mtl",
+                src : "../../../static/models/shapan.obj",
+                mtl : "../../../static/models/shapan.mtl",
                 cameraPosition : {x:-5000,y:2000,z:5000},
                 loading : true,
                 hasSkyBox : true,
