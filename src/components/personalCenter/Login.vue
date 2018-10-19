@@ -12,6 +12,9 @@
       <a @click.prevent="changeLoginMode('message')" v-if="loginMode=='password'">短信验证码登录</a>
       <a @click.prevent="changeLoginMode('password')" v-else>账号密码登录</a>
     </div>
+    <div class="weixin" @click="test">
+      微信登录
+    </div>
   </div>
 </template>
 
@@ -26,7 +29,10 @@ export default {
       rememberMe:false,
       loginMode:"password",
       captchaStatus:false,
-      time:60
+      time:60,
+      buildings:[
+        
+      ]
     }
   },
   methods:{
@@ -43,8 +49,35 @@ export default {
           clearInterval(timer);
         }
       },1000)
+    },
+    //判断是否微信登陆 是不是微信浏览器
+    isWeiXin() {
+      return true;
+      let ua = window.navigator.userAgent.toLowerCase();
+      console.log(ua);//mozilla/5.0 (iphone; cpu iphone os 9_1 like mac os x) applewebkit/601.1.46 (khtml, like gecko)version/9.0 mobile/13b143 safari/601.1
+      if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    test(){
+        if(this.isWeiXin()){
+        //微信登录，接口由后台定义
+          this.$axios.get('/wx/index/login/type/2').then((res) => {
+            if(res.data.code==0){//微信登录成功跳转个人中心
+                this.$router.push({
+                    name:'home/sanshijie',
+                })
+            } else {//微信登录失败，使用填写信息登录
+                this.$router.push({
+                    name:'Login',
+                })
+            }
+          })
+        }
+      }
     }
-  }
 }
 </script>
 

@@ -49,7 +49,7 @@ export default {
 	width: 1.2rem /* 24/20 */;
 	height: 1.2rem /* 24/20 */;
 	border-radius: 50%;
-	background: #f0f0f0;
+	background: #1E81D2;
 	background-repeat:no-repeat; 
 	background-size:80% 80%;
 	-moz-background-size:80% 80%;

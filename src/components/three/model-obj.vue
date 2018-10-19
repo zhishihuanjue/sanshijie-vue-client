@@ -157,7 +157,7 @@ export default {
             if(!this.hasSkyBox)return;
             var cubeMap = new THREE.CubeTexture( [] );
 		    cubeMap.format = THREE.RGBFormat;
-            new THREE.ImageLoader().load( '../../static/skybox.png',(img)=>{
+            new THREE.ImageLoader().load( '../../../static/images/skybox.png',(img)=>{
                 var size = 256;
                 var getSide = function ( x, y ) {
                     var canvas = document.createElement( 'canvas' );

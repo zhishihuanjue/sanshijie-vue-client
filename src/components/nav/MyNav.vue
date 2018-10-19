@@ -26,7 +26,7 @@ export default {
         tabbars:[
             {
                 title:'首页',
-                to:'/home',
+                to:'/home/sanshijie',
                 src:'../../../static/images/首页.png',
             },
             {
