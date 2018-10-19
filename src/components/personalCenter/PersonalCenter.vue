@@ -5,7 +5,7 @@
         <div class="userType">
           {{userTypeName}}
         </div>
-        <div class="logo"></div>
+        <div class="logo" :style="{ 'background-image': 'url('+photo+')'}"></div>
         <!-- <a class="tel">18213917293</a> -->
         <a @click.stop.prevent="showDetail('loginRegisterView')">点击登录</a>
       </div>
@@ -39,7 +39,7 @@
         <app-loginRegister slot="content"></app-loginRegister>
       </app-transition>
       <app-transition  ref="codeView">
-        <app-code slot="content"></app-code>
+        <app-code slot="content" :code="code"></app-code>
       </app-transition>
   </div>
 </template>
@@ -55,7 +55,9 @@ export default {
   data () {
     return {
       userType:"01",
-      userTypeName:"开发商"
+      userTypeName:"开发商",
+      photo:"../../../static/images/photo.png",
+      code:"../../../static/images/code.jpg"
     }
   },
   methods:{
@@ -68,6 +70,28 @@ export default {
     showSetting(){
       this.$refs.settingView.showView()
     }
+  },
+  created(){
+   
+    this.$axios.get("/api/getPlankThickType")
+      .then((response) => {
+      console.log(response.data)
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    /* 
+    this.$axios.post('api', {
+      firstName: 'Fred',
+      lastName: 'Flintstone'
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    }); 
+    */
   },
   components:{
     "app-transition":Transition,
@@ -99,11 +123,11 @@ export default {
   background-color: blue;
   margin:0 auto;
   border: 1px solid #333;
-  background-image:url(../../assets/defaultLogo.jpg);
   background-repeat:no-repeat; 
   background-size:100% 100%;
   -moz-background-size:100% 100%;
-  box-shadow: 0 4px 2px -2px rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0 .1rem /* 2/20 */ .2rem /* 4/20 */ 0 rgba(0,0,0,0.1), 0 .15rem /* 3/20 */ .5rem /* 10/20 */ 0 rgba(0,0,0,0.09);
+  box-shadow: 0 .1rem /* 2/20 */ .2rem /* 4/20 */ 0 rgba(0,0,0,0.1), 0 .15rem /* 3/20 */ .5rem /* 10/20 */ 0 rgba(0,0,0,0.09);
 }
 .personalCenter .header a{
   display: block;
@@ -117,7 +141,7 @@ export default {
 .personalCenter .header .userType{
   width: 4rem /* 80/20 */;
   height: 1.7rem /* 34/20 */;
-  background-color: rgb(255, 184, 21);
+  background-color: #fe0010;
   color: #fff;
   font-size: .7rem /* 14/20 */;
   font-weight: bold;

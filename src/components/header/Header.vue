@@ -26,7 +26,7 @@ export default {
 .header{
   background-image: -webkit-gradient(linear, left top, left bottom, from(#F0F0F0), color-stop(50%, transparent));
   background-image: linear-gradient(180deg, #F0F0F0,transparent 50%);
-  background-size: 100% 1px;
+  background-size: 100% 2px;
   background-repeat: no-repeat;
   background-position: bottom left;
   -webkit-box-align: center;

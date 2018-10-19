@@ -25,14 +25,14 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect:"/myNav/home"
+      redirect:"/home"
     },
-    { path: '/myNav', component: MyNav,
+    { path: '/', component: MyNav,
       children: [
         {
           // 当 /myNav/home 匹配成功，
           // home 会被渲染在 nav 的 <router-view> 中
-          path: 'home',
+          path: 'home/:id',
           component: Home
         },
         {

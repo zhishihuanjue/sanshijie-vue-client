@@ -39,7 +39,7 @@
     <!-- <app-transition  ref="houseView">
       <app-house-detail slot="content" :house="selectHouse"></app-house-detail>
     </app-transition> -->
-    <app-house-detail :house="selectHouse" ref="houseView"></app-house-detail>
+    <app-house-detail :house="selectHouse" ref="houseView" @operationClick="operationClick"></app-house-detail>
     <app-transition  ref="threeView">
       <app-three slot="content" :house="selectHouse"></app-three>
     </app-transition>

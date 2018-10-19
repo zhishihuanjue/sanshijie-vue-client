@@ -29,7 +29,7 @@
 							<span class="praise">{{house.building}}</span>
 						</div>
 						<div class="operation-wrapper">
-							<app-operation :operation="house.operation"></app-operation>
+							<app-operation :house="house" :operation="house.operation" @operationClick="operationClick"></app-operation>
 						</div>
 					</div>
 				</div>
@@ -53,6 +53,11 @@ import Operation from '../house/Operation'
     name:"HouseDetail",
 		data(){
       return {
+				images:[
+					"../../../static/images/1.jpg",
+					"../../../static/images/2.jpg",
+					"../../../static/images/3.jpg",
+				],
         showFlag:false
       }
     },
@@ -76,7 +81,10 @@ import Operation from '../house/Operation'
       },
       closeView(){
         this.showFlag = false
-      }
+			},
+			operationClick(val){
+				this.$emit('operationClick', val);
+			}
     },
     components:{
       "app-operation":Operation
@@ -92,7 +100,7 @@ import Operation from '../house/Operation'
 	}
 </script>
 
-<style>
+<style scoped>
 .house-detail{
 	position: fixed;
 	left: 0;
@@ -100,7 +108,7 @@ import Operation from '../house/Operation'
 	bottom: 63px;
 	background: white;
 	width: 100%;
-	/* z-index: 90; */
+	z-index: 1;
 }
 
 .house-detail-enter-active, .house-detail-leave-active {

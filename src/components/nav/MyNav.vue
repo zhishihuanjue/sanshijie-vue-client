@@ -26,27 +26,27 @@ export default {
         tabbars:[
             {
                 title:'首页',
-                to:'/myNav/home',
+                to:'/home',
                 src:'../../../static/images/首页.png',
             },
             {
                 title:'沙盘',
-                to:'/myNav/sandboxie',
+                to:'/sandboxie',
                 src:'../../../static/images/沙盘.png',
             },
             {
                 title:'户型',
-                to:'/myNav/house',
+                to:'/house',
                 src:'../../../static/images/户型.png',
             },
             {
                 title:'预约',
-                to:'/myNav/book',
+                to:'/book',
                 src:'../../../static/images/预约.png',
             },
             {
                 title:'我的',
-                to:'/myNav/personalCenter',
+                to:'/personalCenter',
                 src:'../../../static/images/我的.png',
             },
         ]

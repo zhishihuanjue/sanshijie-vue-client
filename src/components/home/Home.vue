@@ -66,6 +66,10 @@ export default {
       next: function () {
           this.$refs.swipeWrapper.next();
       }
+  },
+  created(){
+    console.log(this.$route)
+    console.log(this.$route.params.id);
   }
 }
 </script>

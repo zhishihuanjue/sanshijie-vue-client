@@ -19,7 +19,7 @@ export default {
         },
         code:{
           type:String,
-          default:"../../assets/code.jpg"
+          // default:"../../assets/code.jpg"
         }
     },
   data () {
@@ -50,7 +50,7 @@ export default {
     margin: 1rem /* 20/20 */ auto 0 auto;
     width:14.1rem /* 282/20 */; 
     height:19.65rem /* 393/20 */;
-    background-image:url(../../assets/code.jpg);
+    /* background-image:url(../../assets/code.jpg); */
     background-repeat:no-repeat; 
     background-size:100% 100%;
     -moz-background-size:100% 100%;
