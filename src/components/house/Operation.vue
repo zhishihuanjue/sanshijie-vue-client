@@ -42,9 +42,7 @@ export default {
 
 .operation{
 	font-size: 0;
-	width: 1.5rem /* 30/20 */;
 }
-
 .operation .item .bg{
 	width: 1.2rem /* 24/20 */;
 	height: 1.2rem /* 24/20 */;
@@ -78,5 +76,6 @@ export default {
 	height: 1.5rem /* 30/20 */;
 	color: #ffd161;
 	position: relative;
+	padding: .05rem /* 1/20 */;
 }
 </style>

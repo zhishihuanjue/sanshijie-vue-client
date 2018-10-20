@@ -105,7 +105,7 @@ import Operation from '../house/Operation'
 	position: fixed;
 	left: 0;
 	top: 0;
-	bottom: 63px;
+	bottom: 2.75rem /* 55/20 */;
 	background: white;
 	width: 100%;
 	z-index: 1;

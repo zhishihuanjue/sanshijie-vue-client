@@ -9,7 +9,7 @@
           :key="index" 
           @click="showDetail('houseView',house)"
           class="house-item">
-          <div class="icon" :style="head_bg(house.img)"></div>
+          <div class="icon" :style="bg(house.img)"></div>
           <div class="content">
             <h3 class="name">{{house.type}}</h3>
             <div class="extra">
@@ -58,6 +58,7 @@ import HouseDetail from "../houseDetail/HouseDetail"
 import Operation from "./Operation"
 import Three from "./Three"
 import First from "./First"
+import Split from '../tool/Split'
 import { Toast } from 'mint-ui'
 export default {
   name: 'House',
@@ -97,6 +98,58 @@ export default {
           "mtl":"../../../static/models/rongchuangmax2.mtl",
           "firstSrc":"",
           "desc":[]
+        },{
+          "key":"002",
+          "type":"A02",
+          "building":"d3",
+          "area":"105",
+          "houseType":"三室两厅一厨一卫",
+          "unitPrice":"10000",
+          "operation":[1,2,3],
+          "img":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539623281153&di=7398831a2993b4f3f3c9af6c0313fb1c&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20170713%2F7fae2b3125724dec934fb0da5f981b79.png",
+          "src":"../../../static/models/rongchuangmax2.obj",
+          "mtl":"../../../static/models/rongchuangmax2.mtl",
+          "firstSrc":"",
+          "desc":[]
+        },{
+          "key":"002",
+          "type":"A02",
+          "building":"d3",
+          "area":"105",
+          "houseType":"三室两厅一厨一卫",
+          "unitPrice":"10000",
+          "operation":[1,2,3],
+          "img":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539623281153&di=7398831a2993b4f3f3c9af6c0313fb1c&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20170713%2F7fae2b3125724dec934fb0da5f981b79.png",
+          "src":"../../../static/models/rongchuangmax2.obj",
+          "mtl":"../../../static/models/rongchuangmax2.mtl",
+          "firstSrc":"",
+          "desc":[]
+        },{
+          "key":"002",
+          "type":"A02",
+          "building":"d3",
+          "area":"105",
+          "houseType":"三室两厅一厨一卫",
+          "unitPrice":"10000",
+          "operation":[1,2,3],
+          "img":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539623281153&di=7398831a2993b4f3f3c9af6c0313fb1c&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20170713%2F7fae2b3125724dec934fb0da5f981b79.png",
+          "src":"../../../static/models/rongchuangmax2.obj",
+          "mtl":"../../../static/models/rongchuangmax2.mtl",
+          "firstSrc":"",
+          "desc":[]
+        },{
+          "key":"002",
+          "type":"A02",
+          "building":"d3",
+          "area":"105",
+          "houseType":"三室两厅一厨一卫",
+          "unitPrice":"10000",
+          "operation":[1,2,3],
+          "img":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539623281153&di=7398831a2993b4f3f3c9af6c0313fb1c&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20170713%2F7fae2b3125724dec934fb0da5f981b79.png",
+          "src":"../../../static/models/rongchuangmax2.obj",
+          "mtl":"../../../static/models/rongchuangmax2.mtl",
+          "firstSrc":"",
+          "desc":[]
         }
       ],
       selectHouse:{}
@@ -116,7 +169,7 @@ export default {
         click:true
       })
     },
-    head_bg(imgName){
+    bg(imgName){
       return "background-image: url(" + imgName + ");"
     },
     showDetail(type,house){
@@ -159,22 +212,22 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .houseList{
-  padding: .3rem /* 6/20 */;
+
 }
 .house .house-item{
 	display: flex;
-	padding: .3rem /* 6/20 */;
+	padding: .6rem /* 12/20 */;
   position: relative;
-  border-bottom: 1px solid #d9d9d9;
+  border-bottom: 12px solid #f5f5f5;
 }
 
 .house .house-item .icon{
-	flex: 0 0 6rem /* 120/20 */;
+	flex: 0 0 6.5rem /* 130/20 */;
 	background-position: center;
 	background-size: 120% 100%;
   background-repeat: no-repeat;
 	margin-right: .3rem /* 6/20 */;
-	height: 6rem /* 120/20 */;
+	height: 6.5rem /* 130/20 */;
   box-shadow: 0 .1rem /* 2/20 */ .2rem /* 4/20 */ 0 rgba(0,0,0,0.1), 0 .15rem /* 3/20 */ .5rem /* 10/20 */ 0 rgba(0,0,0,0.09);
 }
 .house .house-item .content{

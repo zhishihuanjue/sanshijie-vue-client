@@ -4,7 +4,7 @@
             <div class="img-wrapper">
                 <img class="close-bt" src="../houseDetail/img/close.png" @click.stop.prevent="closeView"/>
             </div>
-            <slot name="content"></slot>
+            <slot name="content" class="test"></slot>
         </div>
     </transition>
 </template>

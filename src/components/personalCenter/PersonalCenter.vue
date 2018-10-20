@@ -10,30 +10,33 @@
         <a @click.stop.prevent="showDetail('loginRegisterView')">点击登录</a>
       </div>
       <div class="pcBody">
-        <div>
-          <mt-cell title="我的关注"></mt-cell>
+        <div class="pcBodyPadding">
+          <div>
+            <mt-cell title="我的关注"></mt-cell>
+          </div>
+          <div @click.stop.prevent="showDetail('myBuildingView')">
+            <mt-cell title="楼盘"  to="/myBuilding"  is-link></mt-cell>
+          </div>
+          <div>
+            <mt-cell title="户型"  to="/nav"  is-link></mt-cell>
+          </div>
         </div>
-        <div>
-          <mt-cell title="楼盘"  to="/myBuilding"  is-link></mt-cell>
-        </div>
-        <div>
-          <mt-cell title="户型"  to="/nav"  is-link></mt-cell>
-        </div>
-        
         <app-split></app-split>
-        <div @click.stop.prevent="showDetail('codeView')">
-          <mt-cell title="推荐二维码" is-link></mt-cell>
+        <div class="pcBodyPadding">
+          <div @click.stop.prevent="showDetail('codeView')">
+            <mt-cell title="推荐二维码" is-link></mt-cell>
+          </div>
+          <div>
+            <mt-cell title="设置登录密码"  to="/nav"  is-link></mt-cell>
+          </div>
+          <div  @click.stop.prevent="showDetail('codeView')">
+            <mt-cell title="帮助中心" is-link></mt-cell>
+          </div>
+          <div  @click.stop.prevent="showDetail('codeView')">
+            <mt-cell title="意见反馈" is-link></mt-cell>
+          </div>
+          <mt-button type="default" plain size="large">退出登录</mt-button>
         </div>
-        <div>
-          <mt-cell title="设置登录密码"  to="/nav"  is-link></mt-cell>
-        </div>
-        <div  @click.stop.prevent="showDetail('codeView')">
-          <mt-cell title="帮助中心" is-link></mt-cell>
-        </div>
-        <div  @click.stop.prevent="showDetail('codeView')">
-          <mt-cell title="意见反馈" is-link></mt-cell>
-        </div>
-        <mt-button type="default" plain size="large">退出登录</mt-button>
       </div>
       <app-transition  ref="loginRegisterView">
         <app-loginRegister slot="content"></app-loginRegister>
@@ -41,19 +44,23 @@
       <app-transition  ref="codeView">
         <app-code slot="content" :code="code"></app-code>
       </app-transition>
+      <app-transition  ref="myBuildingView">
+        <app-myBuilding slot="content" :userId="userId" ref="myBuilding"></app-myBuilding>
+      </app-transition>
   </div>
 </template>
 
 <script>
 import Transition from '../tool/Transition'
 import LoginRegister from './LoginRegister'
-import Setting from './Setting'
 import Code from './Code'
+import MyBuilding from './MyBuilding'
 import Split from '../tool/Split'
 export default {
   name: 'PersonalCenter',
   data () {
     return {
+      userId:"abc",
       userType:"01",
       userTypeName:"开发商",
       photo:"../../../static/images/photo.png",
@@ -63,12 +70,9 @@ export default {
   methods:{
     showDetail(type){
       this.$refs[type].showView()
-    },
-    showLoginRegister(){
-      this.$refs.loginRegisterView.showView()
-    },
-    showSetting(){
-      this.$refs.settingView.showView()
+      if(this.$refs[type.replace('View','')] && this.$refs[type.replace('View','')].initScroll){
+        this.$refs[type.replace('View','')].initScroll()
+      }
     }
   },
   created(){
@@ -96,7 +100,7 @@ export default {
   components:{
     "app-transition":Transition,
     "app-loginRegister":LoginRegister,
-    "app-setting":Setting,
+    "app-myBuilding":MyBuilding,
     "app-code":Code,
     "app-split":Split
   }
@@ -105,6 +109,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.pcBodyPadding{
+  padding: 0 .6rem /* 12/20 */ 0 .6rem /* 12/20 */;
+}
 .personalCenter{
   margin-top: -2rem /* 40/20 */;
 }
@@ -150,8 +157,5 @@ export default {
   box-shadow: 0 4px 2px -2px rgba(0,0,0,0.4);
   border-top-right-radius:.85rem /* 17/20 */;
   border-bottom-right-radius:.85rem /* 17/20 */;
-}
-.personalCenter .pcBody{
-  padding: .3rem /* 6/20 */;
 }
 </style>
