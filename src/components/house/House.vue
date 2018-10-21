@@ -186,9 +186,9 @@ export default {
     },
     collect(house){
       console.log(house)
-      //如果已经收藏过，则取消收藏，并且已经收藏过的户型，按钮要变色
+      //如果已经关注过，则取消关注，并且已经关注过的户型，按钮要变色
       Toast({
-        message: '收藏成功，可前往我的收藏查看',
+        message: '关注成功，可前往我的关注查看',
         duration: 2000
       });
     }

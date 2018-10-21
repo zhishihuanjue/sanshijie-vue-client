@@ -15,10 +15,10 @@
             <mt-cell title="我的关注"></mt-cell>
           </div>
           <div @click.stop.prevent="showDetail('myBuildingView')">
-            <mt-cell title="楼盘"  to="/myBuilding"  is-link></mt-cell>
+            <mt-cell title="楼盘" is-link></mt-cell>
           </div>
-          <div>
-            <mt-cell title="户型"  to="/nav"  is-link></mt-cell>
+          <div  @click.stop.prevent="showDetail('myHouseView')">
+            <mt-cell title="户型" is-link></mt-cell>
           </div>
         </div>
         <app-split></app-split>
@@ -47,6 +47,9 @@
       <app-transition  ref="myBuildingView">
         <app-myBuilding slot="content" :userId="userId" ref="myBuilding"></app-myBuilding>
       </app-transition>
+      <app-transition  ref="myHouseView">
+        <app-myHouse slot="content" :userId="userId" ref="myHouse"></app-myHouse>
+      </app-transition>
   </div>
 </template>
 
@@ -55,6 +58,7 @@ import Transition from '../tool/Transition'
 import LoginRegister from './LoginRegister'
 import Code from './Code'
 import MyBuilding from './MyBuilding'
+import MyHouse from './MyHouse'
 import Split from '../tool/Split'
 export default {
   name: 'PersonalCenter',
@@ -101,6 +105,7 @@ export default {
     "app-transition":Transition,
     "app-loginRegister":LoginRegister,
     "app-myBuilding":MyBuilding,
+    "app-myHouse":MyHouse,
     "app-code":Code,
     "app-split":Split
   }

@@ -120,9 +120,9 @@ export default {
   -moz-background-size:100% 100%;
 }
 .container img[lazy=loading]{
-  width: 100%;
-  height: auto;
-  background-color: #ddd;
+  width: 40px;
+  height: 300px;
+  margin: auto;
 }
 .introduce{
   display: inline-block;

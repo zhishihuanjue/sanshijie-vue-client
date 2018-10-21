@@ -38,7 +38,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 .operation{
 	font-size: 0;
@@ -47,7 +47,7 @@ export default {
 	width: 1.2rem /* 24/20 */;
 	height: 1.2rem /* 24/20 */;
 	border-radius: 50%;
-	background: #1E81D2;
+	background: #737373;
 	background-repeat:no-repeat; 
 	background-size:80% 80%;
 	-moz-background-size:80% 80%;

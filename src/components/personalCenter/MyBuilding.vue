@@ -1,8 +1,9 @@
 <template>
   <div class="myBuilding" ref="myBuilding">
-    <div class="building-wrapper">
-      <div v-for="building in buildings" :key="building.id" class="building">
+    <div class="building-wrapper" v-if="buildings&&buildings.length">
+      <div v-for="(building,index) in buildings" :key="building.id" class="building">
         <div class="building-content">
+          <div class="collect" @click="cancleCollect(index)"><i class="bg"></i></div>
           <div class="name">楼盘：{{building.name}}</div>
           <div class="address">地址：{{building.address}}</div>
           <div class="icon" :style="bg(building.img)"></div>
@@ -13,12 +14,14 @@
         <app-split/>
       </div>
     </div>
+    <div class="tip" v-else>您还没有关注楼盘，请扫描销售经理推荐的二维码进行关注。</div>
   </div>
 </template>
 
 <script>
 import BScroll from 'better-scroll'
 import Split from '../tool/Split'
+import {  MessageBox,Toast } from 'mint-ui'
 export default {
   name: 'MyBuilding',
   data () {
@@ -52,6 +55,26 @@ export default {
           this.scroll.refresh()
         }
       })
+    },
+    cancleCollect(index){
+       MessageBox.confirm('', {
+         message: '确定要取消关注吗？再次关注需要扫描销售经理提供的二维码', 
+         title: '提示', 
+         confirmButtonText: '确定', 
+         cancelButtonText: '再考虑一下' 
+       }).then(action => { 
+         if (action == 'confirm') {//确认的回调
+          this.buildings.splice(index,1)
+          Toast({
+            message: '恭喜您，取消关注成功',
+            duration: 2000
+          });
+         }
+       }).catch(err => { 
+         if (err == 'cancel') {//取消的回调
+          console.log(2);
+         }
+       });
     }
   },
   components:{
@@ -119,5 +142,35 @@ export default {
   background-size:cover;
   box-shadow: 0 .1rem /* 2/20 */ .2rem /* 4/20 */ 0 rgba(0,0,0,0.1), 0 .15rem /* 3/20 */ .5rem /* 10/20 */ 0 rgba(0,0,0,0.09);
 }
+.building-content .collect{
+  width: 1.5rem /* 30/20 */;
+  height: 1.5rem /* 30/20 */;
+  color: #ffd161;
+  position: absolute;
+  padding: .05rem /* 1/20 */;
+  right: .6rem /* 12/20 */;
+}
+.building-content .collect .bg{
+    background: #1E81D2;
+    background-image: url(../house/img/collect.png);
+    width: 1.5rem /* 30/20 */;
+    height: 1.5rem /* 30/20 */;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size: 80% 80%;
+    -moz-background-size: 80% 80%;
+    background-position: center center;
+    position: absolute;
+    right: 0;
+    z-index: -1;
+}
 
+.tip{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: .8rem /* 16/20 */;
+  font-weight: bold;
+  margin-top: 5rem /* 100/20 */;
+}
 </style>
