@@ -67,7 +67,7 @@ export default {
 }
 
 .operation .collect .bg{
-	background-image:url(./img/collect.png);
+	background-image:url(../../../static/images/collect.png);
 }
 
 .operation .item{

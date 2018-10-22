@@ -6,7 +6,7 @@
       <ul class="houseList">
         <li 
           v-for="(house,index) in houses" 
-          :key="index" 
+          :key="index"
           @click="showDetail('houseView',house)"
           class="house-item">
           <div class="icon" :style="bg(house.img)"></div>
@@ -44,7 +44,7 @@
       <app-three slot="content" :house="selectHouse"></app-three>
     </app-transition>
     <app-transition  ref="firstView">
-      <app-first slot="content" :house="selectHouse"></app-first>
+      <app-first slot="content" :src="selectHouse.firstSrc"></app-first>
     </app-transition>
   </div>
 </template>
@@ -66,7 +66,7 @@ export default {
     return {
       hasHeader:true,
       houses:[{
-          "key":"001",
+          "id":"001",
           "type":"A01",
           "building":"d1",
           "area":"89",
@@ -86,7 +86,7 @@ export default {
 						"第六、我们可以根据户型图的整体设计的面积大小，自己在电脑上来一个虚拟设计的办法，这样我们可以大体上给出家具和家电的摆放位置，也可以比较精确的计算出这个户型适不适合自己。"
           ]
         },{
-          "key":"002",
+          "id":"002",
           "type":"A02",
           "building":"d3",
           "area":"105",
@@ -99,7 +99,7 @@ export default {
           "firstSrc":"",
           "desc":[]
         },{
-          "key":"002",
+          "id":"002",
           "type":"A02",
           "building":"d3",
           "area":"105",
@@ -112,7 +112,7 @@ export default {
           "firstSrc":"",
           "desc":[]
         },{
-          "key":"002",
+          "id":"002",
           "type":"A02",
           "building":"d3",
           "area":"105",
@@ -125,7 +125,7 @@ export default {
           "firstSrc":"",
           "desc":[]
         },{
-          "key":"002",
+          "id":"002",
           "type":"A02",
           "building":"d3",
           "area":"105",
@@ -138,7 +138,7 @@ export default {
           "firstSrc":"",
           "desc":[]
         },{
-          "key":"002",
+          "id":"002",
           "type":"A02",
           "building":"d3",
           "area":"105",

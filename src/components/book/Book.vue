@@ -80,7 +80,7 @@ export default {
 .book-content .title,
 .book-content .company,
 .book-content .form{
-  padding: 0 .6rem /* 12/20 */;
+  padding: .3rem /* 6/20 */ .6rem /* 12/20 */;
 }
 .book-content h3{
   font-size: .9rem /* 18/20 */;

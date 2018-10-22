@@ -66,7 +66,6 @@ export default {
 .page-tabbar .page-wrap {
     overflow: auto;
     height: 100%;
-    /* padding-bottom: 55px; */
     padding: 40px 0 55px 0;
 }
 .page-tabbar .tabbar{
@@ -75,7 +74,6 @@ export default {
     background-size: 100% 2px;
     background-repeat: no-repeat;
     background-position: top left;
-    position: relative;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;

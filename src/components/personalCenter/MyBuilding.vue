@@ -1,7 +1,12 @@
 <template>
   <div class="myBuilding" ref="myBuilding">
     <div class="building-wrapper" v-if="buildings&&buildings.length">
-      <div v-for="(building,index) in buildings" :key="building.id" class="building">
+      <mt-search
+        class="mySearch"
+        placeholder="请输入楼盘名称或地址"
+        v-model="value">
+      </mt-search>
+      <div v-for="(building,index) in filterResult" :key="building.id" class="building">
         <div class="building-content">
           <div class="collect" @click="cancleCollect(index)"><i class="bg"></i></div>
           <div class="name">楼盘：{{building.name}}</div>
@@ -15,6 +20,9 @@
       </div>
     </div>
     <div class="tip" v-else>您还没有关注楼盘，请扫描销售经理推荐的二维码进行关注。</div>
+    <transition name="fade">
+      <div class="loading" v-if="loading">正在加载...</div>
+    </transition>
   </div>
 </template>
 
@@ -26,11 +34,12 @@ export default {
   name: 'MyBuilding',
   data () {
     return {
+      value:"",
       buildings:[
           {
             id:"abc",
-            name:"东华小区",
-            address:"昆明市盘龙区康庄大道中段",
+            name:"西华小区",
+            address:"昆明市盘龙区非康庄大道中段",
             img:"https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1540013896&di=2971c471b182159d5591f5d75878ba81&src=http://pic.qiantucdn.com/58pic/18/11/53/55d55f9b386e6_1024.jpg"
           },{
             id:"abcd",
@@ -38,7 +47,9 @@ export default {
             address:"昆明市盘龙区康庄大道中段",
             img:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1540024011491&di=df87275aa01b89bd64614bb1345a5a11&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fphotoblog%2F6%2F9%2F2%2F5%2F6925974%2F200912%2F7%2F1260179083464.jpg"
           }
-      ]
+      ],
+      currentPage:"1",
+      loading:false
     }
   },
   methods:{
@@ -49,8 +60,23 @@ export default {
       this.$nextTick(() => {
         if(!this.scroll){
           this.scroll = new BScroll(this.$refs.myBuilding,{
-            click:true
+            click:true,
+            probeType: 2,
+            //下拉刷新：可以配置顶部下拉的距离（threshold） 来决定刷新时机以及回弹停留的距离（stop）
+            //这个配置用于做上拉加载功能，默认为 false。当设置为 true 或者是一个 Object 的时候，可以开启上拉加载
+            pullUpLoad: {
+              threshold: 10
+            },
+            mouseWheel: {// pc端同样能滑动
+                speed: 20,
+                invert: false
+            },
+            useTransition:false  // 防止iphone微信滑动卡顿
           })
+          this.scroll.on("pullingUp",() => {
+            this.loadMore()
+            this.scroll.finishPullUp();//可以多次执行上拉刷新
+          });
         }else{
           this.scroll.refresh()
         }
@@ -75,6 +101,27 @@ export default {
           console.log(2);
          }
        });
+    },
+    loadMore(){
+      console.log("loading")
+      this.loading = true
+      this.$axios.get("/api/getPlankThickType")
+      .then((response) => {
+        console.log("sucess");
+        setTimeout(()=>{
+          this.loading = false
+        },2000)
+      })
+      .catch(function (error) {
+        console.log("error");
+      });
+    }
+  },
+  computed: {
+    filterResult() {
+      return this.buildings.filter((item) => {
+        return new RegExp(this.value, 'i').test(item.name) || new RegExp(this.value, 'i').test(item.address)
+      });
     }
   },
   components:{
@@ -85,10 +132,15 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.mySearch{
+  height: 52px;
+  padding-left: 40px;
+  background-color: #d9d9d9;
+}
 .myBuilding{
 	position: fixed;
 	left: 0;
-	top: 40px;
+	top: 0;
 	bottom: 2.75rem /* 55/20 */;
 	background: white;
 	width: 100%;
@@ -123,7 +175,7 @@ export default {
   background-color: transparent;
   -webkit-box-shadow: none;
   box-shadow: none;
-  border-radius: .3rem /* 6/20 */;
+  border-radius: .2rem /* 4/20 */;
   text-decoration: none;
   color: inherit;
   font-size: 1rem /* 20/20 */;
@@ -152,7 +204,7 @@ export default {
 }
 .building-content .collect .bg{
     background: #1E81D2;
-    background-image: url(../house/img/collect.png);
+    background-image: url(../../../static/images/collect.png);
     width: 1.5rem /* 30/20 */;
     height: 1.5rem /* 30/20 */;
     border-radius: 50%;
@@ -172,5 +224,22 @@ export default {
   font-size: .8rem /* 16/20 */;
   font-weight: bold;
   margin-top: 5rem /* 100/20 */;
+}
+.loading{
+  width: 100%;
+  height: 2rem /* 40/20 */;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background: whitesmoke;
+  text-align: center;
+  line-height: 2rem /* 40/20 */;
+  font-size: .6rem /* 12/20 */;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>

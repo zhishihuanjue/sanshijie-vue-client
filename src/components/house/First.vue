@@ -1,6 +1,6 @@
 <template>
     <div class="first">
-        <iframe v-if="house.firstSrc" style="width:100%;height:100%;" scrolling="no" :src="house.firstSrc"></iframe>
+        <iframe v-if="src" style="width:100%;height:100%;" scrolling="no" :src="src"></iframe>
         <div class="tip" v-else>此户型还没有上传漫游视图，敬请期待。</div>
     </div>
 </template>
@@ -15,8 +15,8 @@ export default {
         }
     },
     props:{
-      house:{
-        type:Object
+      src:{
+        type:String
       }
     },
     components:{

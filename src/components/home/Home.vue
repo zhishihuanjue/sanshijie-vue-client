@@ -16,6 +16,15 @@
       </div>
     </div>
     <app-split></app-split>
+    <div class="menu">
+      <a class="tab-item" v-for="(item,index) in menus" :key="index" @click="menu(index)">
+        <div class="tab-item-icon tab-item-icon-care" :style="{ 'background-image':'url('+item.src+')'}"></div>
+        <div class="tab-item-lable">
+            {{item.title}}
+        </div>
+      </a>
+    </div>
+    <app-split></app-split>
     <!-- <span class="introduce">基本信息</span> -->
     <div class="container" ref="page-content">
       <ul>
@@ -51,6 +60,18 @@ export default {
         "../../../static/images/6.jpg",
         "../../../static/images/7.jpg",
         "../../../static/images/8.jpg"
+      ],
+      menus:[
+        {
+          title:"关注",
+          src:"../../../static/images/collect.png"
+        },{
+          title:"关注",
+          src:"../../../static/images/collect.png"
+        },{
+          title:"关注",
+          src:"../../../static/images/collect.png"
+        },
       ]
     }
   },
@@ -60,11 +81,14 @@ export default {
     "app-split":Split
   },
   methods: {
-      prev: function () {
+      prev() {
           this.$refs.swipeWrapper.prev()
       },
-      next: function () {
+      next(){
           this.$refs.swipeWrapper.next();
+      },
+      menu(index){
+        console.log(index)
       }
   },
   created(){
@@ -76,6 +100,45 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.menu{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  color: #ffffff;
+  background-color: #1E81D2;
+}
+.menu .tab-item{
+    display: block;
+    padding: .35rem /* 7/20 */ 0;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    text-decoration: none;
+    color: inherit;
+    -webkit-tap-highlight-color:rgba(255,0,0,0);
+}
+.menu .tab-item .tab-item-icon{
+  width: 1.4rem /* 28/20 */;
+  height: 1.4rem /* 28/20 */;
+  margin: 0 auto .25rem /* 5/20 */;
+  border-radius: 50%;
+  background-color:#1E81D2;
+  background-repeat:no-repeat; 
+  background-attachment:"fixed";
+  background-size:100% 100%;
+  -moz-background-size:100% 100%;
+}
+.menu .tab-item .tab-item-icon > *{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.menu .tab-item .tab-item-lable{
+    color: inherit;
+    font-size: .6rem /* 12/20 */;
+    line-height: 1;
+}
 .swipe-wrapper{
   width: 16rem;
   height: 8rem;
@@ -111,6 +174,9 @@ export default {
   background-image:url(../../assets/next.png);
   right: 1rem /* 20/20 */;
 }
+.container{
+  font-size: 0;
+}
 .container img{
   width: 100%;
   height: auto;
@@ -120,9 +186,9 @@ export default {
   -moz-background-size:100% 100%;
 }
 .container img[lazy=loading]{
-  width: 40px;
-  height: 300px;
-  margin: auto;
+  width: 100%;
+  height: auto;
+  background-color: #ddd;
 }
 .introduce{
   display: inline-block;

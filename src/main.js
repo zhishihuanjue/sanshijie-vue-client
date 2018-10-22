@@ -13,7 +13,7 @@ import '../static/css/reset.css'
 
 Vue.use(MintUI)
 
-axios.defaults.baseURL='http://192.168.1.23:8585/F3DDesign'
+axios.defaults.baseURL='http://f3d.ddroom.cn'
 Vue.prototype.$axios = axios
 
 Vue.config.productionTip = false
