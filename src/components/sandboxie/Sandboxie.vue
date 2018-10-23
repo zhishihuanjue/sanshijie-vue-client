@@ -113,7 +113,7 @@
 	width: 1.5rem /* 30/20 */;
 	height: 1.5rem /* 30/20 */;
 	position: absolute;
-	left: .5rem /* 10/20 */;
+	right: .5rem /* 10/20 */;
 	top: 2.5rem /* 50/20 */;
 	text-align: center;
 	font-size: 1.5rem /* 30/20 */;
