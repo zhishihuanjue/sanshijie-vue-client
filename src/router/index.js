@@ -1,37 +1,26 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-//import HelloWorld from '@/components/HelloWorld'
-// import Nav from '@/components/nav/Nav'
-// import PersonalCenter from '@/components/personalCenter/PersonalCenter'
-// import Login from '@/components/personalCenter/Login'
-// import LoginRegister from '@/components/personalCenter/LoginRegister'
-// import Setting from '@/components/personalCenter/Setting'
-// import Code from '@/components/personalCenter/Code'
-// import MyBuilding from '@/components/personalCenter/MyBuilding'
-
-// import Nav from '@/components/nav/Nav'
-import MyNav from '@/components/nav/MyNav'
+import Nav from '@/components/nav/Nav'
 import Home from '@/components/home/Home'
 import Sandboxie from '@/components/sandboxie/Sandboxie'
 import House from '@/components/house/House'
 import Book from '@/components/book/Book'
 import PersonalCenter from '@/components/personalCenter/PersonalCenter'
+import Nofind from '@/components/404/404'
 
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
-  routes: [
+  routes: [{
+      path: '/',
+      redirect: "/home/sanshijie"
+    },
     {
       path: '/',
-      redirect:"/home/sanshijie"
-    },
-    { path: '/', component: MyNav,
-      children: [
-        {
-          // 当 /myNav/home 匹配成功，
-          // home 会被渲染在 nav 的 <router-view> 中
+      component: Nav,
+      children: [{
           name: 'home',
           path: 'home/:id',
           component: Home
@@ -53,48 +42,23 @@ export default new Router({
           component: PersonalCenter
         },
       ]
+    }, {
+      path: '*',
+      name: '/404',
+      component: Nofind
     },
-    /* {
-      path: '/nav',
-      component: Nav
-    }, 
-    {
-      path: '/myNav',
-      component: MyNav
-    }, */
-    /* {
-      path: '/',
-      component: Nav,
-      redirect:"/nav"
-    },
-    {
-      path: '/nav',
-      component: Nav
-    },    
-    {
-      path: '/personalCenter',
-      component: PersonalCenter
-    },
-    {
-      path: '/login',
-      component: Login,
-      // component: resolve => require(['@/components/personalCenter/Login'],resolve)
-    },
-    {
-      path: '/loginRegister',
-      component: LoginRegister
-    },
-    {
-      path: '/setting',
-      component: Setting
-    },
-    {
-      path: '/code',
-      component: Code
-    },
-    {
-      path: '/myBuilding',
-      component: MyBuilding
-    }, */
   ]
+});
+
+// 添加路由守卫
+router.beforeEach((to, from, next) => {
+  // const isLogin = localStorage.eleToken ? true : false;
+  // if (to.path == "/login" || to.path == "/register") {
+  //   next();
+  // } else {
+  //   isLogin ? next() : next("/login");
+  // }
+  next()
 })
+
+export default router;

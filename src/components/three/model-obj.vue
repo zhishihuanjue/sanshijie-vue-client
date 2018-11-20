@@ -128,6 +128,8 @@ export default {
                     if ( result ) {
                         mtlPath = result[ 1 ];
                         mtlSrc = result[ 2 ];
+                        console.log(mtlPath)
+                        console.log(mtlSrc)
                     }
 
                 }

@@ -72,11 +72,27 @@ export default {
         });
       } else {
         //执行注册
-        Toast({
-          message: '注册成功',
-          duration: 2000
-        });
+        this.submitForm()
       }
+    },
+    submitForm(formName) {
+      this.$refs[formName].validate(valid => {
+        if (valid) {
+          this.$axios
+            .post("/api/users/register", this.registerUser)
+            .then(res => {
+              // 注册成功
+               Toast({
+                message: '注册成功',
+                duration: 2000
+              });
+              // this.$router.push("/login");
+            });
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
     }
   }
 }

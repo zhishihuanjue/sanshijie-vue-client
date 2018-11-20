@@ -1,6 +1,14 @@
 <template>
   <div class="home">
-    <app-header :isFixed=true :title="name"></app-header>
+    <app-header :isFixed=true :title="premises.name || name"></app-header>
+    Logo:{{premises.logo}}<br>
+    开发商:{{premises.developer}}<br>
+    地址:{{premises.province + premises.city + premises.area + premises.address}}<br>
+    开盘时间:{{premises.openTime}}--{{premises.endTime}}<br>
+    联系电话:{{premises.phone}}<br>
+    备注信息:{{premises.remark}}<br>
+    视频地址:{{premises.videoAddress}}<br>
+    经纬度:{{premises.latitude}}--{{premises.longitude}}
     <div class="swipe">
       <div class="swipe-wrapper">
           <mt-swipe ref="swipeWrapper">
@@ -34,165 +42,186 @@
       </ul>
     </div>
     <app-endLine></app-endLine>
+    <!-- <app-bMap></app-bMap> -->
+    <app-aMap></app-aMap>
   </div>
 </template>
 
 <script>
-import EndLine from "../tool/EndLine"
-import Split from "../tool/Split"
-import Header from "../header/Header"
+import EndLine from "../tool/EndLine";
+import Split from "../tool/Split";
+import Header from "../header/Header";
+import BMap from "../map/BMap";
+import AMap from "../map/AMap";
 
 // import BScroll from 'better-scroll'
 
 export default {
-  name: 'Home',
-  data () {
+  name: "Home",
+  data() {
     return {
-      name:"三视界",
-      swipeImages:[
+      name: "三视界",
+      swipeImages: [
         "../../../static/images/1.jpg",
         "../../../static/images/2.jpg",
-        "../../../static/images/3.jpg",
+        "../../../static/images/3.jpg"
       ],
-      images:[
+      images: [
         "../../../static/images/4.jpg",
         "../../../static/images/5.jpg",
         "../../../static/images/6.jpg",
         "../../../static/images/7.jpg",
         "../../../static/images/8.jpg"
       ],
-      menus:[
+      menus: [
         {
-          title:"关注",
-          src:"../../../static/images/collect.png"
-        },{
-          title:"关注",
-          src:"../../../static/images/collect.png"
-        },{
-          title:"关注",
-          src:"../../../static/images/collect.png"
+          title: "关注",
+          src: "../../../static/images/collect.png"
         },
+        {
+          title: "关注",
+          src: "../../../static/images/collect.png"
+        },
+        {
+          title: "关注",
+          src: "../../../static/images/collect.png"
+        }
       ]
-    }
+    };
   },
-  components:{
-    "app-endLine":EndLine,
-    "app-header":Header,
-    "app-split":Split
+  components: {
+    "app-endLine": EndLine,
+    "app-header": Header,
+    "app-split": Split,
+    // "app-bMap": BMap,
+    "app-aMap": AMap
   },
   methods: {
-      prev() {
-          this.$refs.swipeWrapper.prev()
-      },
-      next(){
-          this.$refs.swipeWrapper.next();
-      },
-      menu(index){
-        console.log(index)
-      }
+    prev() {
+      this.$refs.swipeWrapper.prev();
+    },
+    next() {
+      this.$refs.swipeWrapper.next();
+    },
+    menu(index) {
+      console.log(index);
+    },
+    getPremisesById(id) {
+      this.$axios.get(`/api/premises/getPremisesById?id=${id}`).then(res => {
+        // 操作成功
+        if (res.status == 200 && res.data && res.data.success) {
+          this.$store.dispatch("setPremises", res.data.obj)
+        }
+        console.log(res.data.obj)
+      });
+    }
   },
-  created(){
-    console.log(this.$route)
-    console.log(this.$route.params.id);
+  created() {
+    this.getPremisesById(this.$route.params.id);
+  },
+  computed: {
+    premises() {
+      return this.$store.state.premises;
+    }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.menu{
+.menu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   text-align: center;
   color: #ffffff;
-  background-color: #1E81D2;
+  background-color: #1e81d2;
 }
-.menu .tab-item{
-    display: block;
-    padding: .35rem /* 7/20 */ 0;
-    -webkit-box-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    text-decoration: none;
-    color: inherit;
-    -webkit-tap-highlight-color:rgba(255,0,0,0);
+.menu .tab-item {
+  display: block;
+  padding: 0.35rem /* 7/20 */ 0;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  text-decoration: none;
+  color: inherit;
+  -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
 }
-.menu .tab-item .tab-item-icon{
+.menu .tab-item .tab-item-icon {
   width: 1.4rem /* 28/20 */;
   height: 1.4rem /* 28/20 */;
-  margin: 0 auto .25rem /* 5/20 */;
+  margin: 0 auto 0.25rem /* 5/20 */;
   border-radius: 50%;
-  background-color:#1E81D2;
-  background-repeat:no-repeat; 
-  background-attachment:"fixed";
-  background-size:100% 100%;
-  -moz-background-size:100% 100%;
+  background-color: #1e81d2;
+  background-repeat: no-repeat;
+  background-attachment: "fixed";
+  background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
 }
-.menu .tab-item .tab-item-icon > *{
-    display: block;
-    width: 100%;
-    height: 100%;
+.menu .tab-item .tab-item-icon > * {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
-.menu .tab-item .tab-item-lable{
-    color: inherit;
-    font-size: .6rem /* 12/20 */;
-    line-height: 1;
+.menu .tab-item .tab-item-lable {
+  color: inherit;
+  font-size: 0.6rem /* 12/20 */;
+  line-height: 1;
 }
-.swipe-wrapper{
+.swipe-wrapper {
   width: 16rem;
   height: 8rem;
 }
-.item img{
+.item img {
   width: 100%;
   height: auto;
   max-width: 100%;
-  background-repeat:no-repeat; 
-  background-size:100% 100%;
-  -moz-background-size:100% 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
 }
-.button-wrapper{
+.button-wrapper {
   position: absolute;
   top: 4.75rem;
   width: 100%;
 }
-.flex-item{
-  position:absolute;
+.flex-item {
+  position: absolute;
   height: 1.5rem /* 30/20 */;
   width: 1.5rem /* 30/20 */;
   border: none;
   background-color: rgba(0, 0, 0, 0);
-  background-repeat:no-repeat; 
-  background-size:100% 100%;
-  -moz-background-size:100% 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
 }
-.prev-button{
-  background-image:url(../../assets/prev.png);
+.prev-button {
+  background-image: url(../../assets/prev.png);
   left: 1rem /* 20/20 */;
 }
-.next-button{
-  background-image:url(../../assets/next.png);
+.next-button {
+  background-image: url(../../assets/next.png);
   right: 1rem /* 20/20 */;
 }
-.container{
+.container {
   font-size: 0;
 }
-.container img{
+.container img {
   width: 100%;
   height: auto;
   max-width: 100%;
-  background-repeat:no-repeat; 
-  background-size:100% 100%;
-  -moz-background-size:100% 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
 }
-.container img[lazy=loading]{
+.container img[lazy="loading"] {
   width: 100%;
   height: auto;
   background-color: #ddd;
 }
-.introduce{
+.introduce {
   display: inline-block;
-  font-size: .8rem /* 16/20 */;
-  padding: .3rem /* 6/20 */;
+  font-size: 0.8rem /* 16/20 */;
+  padding: 0.3rem /* 6/20 */;
 }
 </style>
